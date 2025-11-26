@@ -5,8 +5,12 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* Fondo tipo pergamino con textura sutil y tonos egipcios */
+    background-color: #0f1b14;
+    background-image: radial-gradient(circle at 10% 10%, rgba(255,230,150,0.04), transparent 20%),
+                      repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0 6px, transparent 6px 12px),
+                      linear-gradient(180deg, #0b2b23 0%, #1b1a12 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -15,26 +19,30 @@ body {
 }
 
 .container {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    max-width: 500px;
+    background: #f6eddc; /* color pergamino */
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    padding: 36px 34px;
+    max-width: 680px;
     width: 100%;
+    border: 6px solid rgba(184,134,11,0.12);
+    position: relative;
 }
 
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 2.5em;
+    color: #482300; /* marrón oscuro */
+    margin-bottom: 6px;
+    font-size: 2.6em;
+    letter-spacing: 1px;
+    font-weight: 700;
 }
 
 .subtitle {
     text-align: center;
-    color: #666;
-    margin-bottom: 30px;
-    font-size: 0.95em;
+    color: #6b5b3a;
+    margin-bottom: 26px;
+    font-size: 1em;
 }
 
 .links-section {
@@ -44,38 +52,58 @@ h1 {
 }
 
 .link-card {
-    padding: 15px 20px;
-    background: #f5f5f5;
-    border-left: 8px solid #667eea;
-    border-radius: 15px;
+    padding: 16px 22px;
+    background: linear-gradient(180deg, rgba(255,250,240,0.95), #f1e6d2);
+    border-left: 8px solid #b8860b; /* dorado */
+    border-radius: 10px;
     text-decoration: none;
-    color: #999;
+    color: #5a4a2f;
     cursor: not-allowed;
-    transition: all 0.3s ease;
-    text-align: center;
-    font-weight: 500;
-    font-size: 0.95em;
+    transition: all 0.2s ease;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1em;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
 }
 
 .link-card:hover {
-    background: #e8e8e8;
-    border-left-color: #764ba2;
+    background: linear-gradient(180deg, rgba(255,250,240,1), #efe1c6);
+    border-left-color: #ffd24a;
 }
 
 .member-name {
     display: block;
-    font-size: 1.1em;
-    margin-bottom: 5px;
+    font-size: 1.05em;
+    margin-bottom: 6px;
 }
 
 .status {
-    font-size: 0.85em;
-    color: #aaa;
+    font-size: 0.87em;
+    color: #8a7860;
 }
 
 footer {
     text-align: center;
     margin-top: 30px;
-    color: #999;
-    font-size: 0.9em;
+    color: #7a6b55;
+    font-size: 0.95em;
+}
+
+/* Decorativo: pequeño borde superior dorado */
+.container::before{
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 14px;
+    background: linear-gradient(90deg, rgba(184,134,11,0.95), rgba(255,215,0,0.85));
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+@media (max-width: 520px){
+    .container{padding:28px}
+    h1{font-size:1.8em}
 }
