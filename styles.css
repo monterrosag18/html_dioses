@@ -9,7 +9,7 @@ body {
     /* Fondo con imagen y gradiente superpuesto con menos opacidad para más claridad */
     background-image: 
         linear-gradient(135deg, rgba(11, 43, 35, 0.35), rgba(27, 26, 18, 0.35)),
-        url('imagenes/fondo.jpg');
+        url('imagenes/fondo.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -21,7 +21,7 @@ body {
 }
 
 .container {
-    background: #f6eddc; /* color pergamino */
+    background-color: rgba(255, 255, 255, 0.5); /* color pergamino */
     border-radius: 12px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
     padding: 36px 34px;
@@ -55,7 +55,7 @@ h1 {
 
 .link-card {
     padding: 16px 22px;
-    background: linear-gradient(180deg, rgba(255,250,240,0.95), #f1e6d2);
+    background-color: rgba(255, 255, 255, 0.5);
     border-left: 8px solid #b8860b; /* dorado */
     border-radius: 10px;
     text-decoration: none;
@@ -91,21 +91,10 @@ footer {
     font-size: 0.95em;
 }
 
-/* Decorativo: pequeño borde superior dorado */
-.container::before{
-    content: "";
-    position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 220px;
-    height: 14px;
-    background: linear-gradient(90deg, rgba(184,134,11,0.95), rgba(255,215,0,0.85));
-    border-radius: 8px;
-    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-}
+
 
 @media (max-width: 520px){
     .container{padding:28px}
     h1{font-size:1.8em}
 }
+
