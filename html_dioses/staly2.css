@@ -1,0 +1,194 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Cinzel', serif; /* Tipografía con toque místico */
+    background: radial-gradient(circle at top, #1b2735, #090a0f); /* Fondo estelar y misterioso */
+    color: #e0e0f8;
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 60px 20px 40px 20px;
+    background: linear-gradient(135deg, rgba(72,61,139,0.8), rgba(123,104,238,0.7));
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 50px rgba(123,104,238,0.7) inset;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: 0 0 20px #ffda44, 0 0 40px #8a2be2;
+    margin-bottom: 15px;
+    
+}
+
+header h2 {
+    font-size: 1.2rem;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+    color: #dcdcff;
+    text-shadow: 0 0 10px #8a2be2;
+}
+
+header img {
+    
+    max-width: 800px;
+    margin-top: 20px;
+    filter: drop-shadow(0 0 20px #ffda44);
+    border-radius: 10PX;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    background: rgba(28, 63, 149, 0.8);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 20px rgba(123,104,238,0.6) inset;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 20px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: 0.4s;
+}
+
+nav a:hover {
+    color: #ffda44;
+    text-shadow: 0 0 15px #ffda44;
+    background: rgba(255,255,255,0.05);
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 60px;
+    padding: 30px;
+    background: rgba(72,61,139,0.2);
+    border-radius: 20px;
+    box-shadow: 0 0 40px rgba(123,104,238,0.3);
+    backdrop-filter: blur(8px);
+}
+
+section h1 {
+    color: #ffda44;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px #ffda44, 0 0 40px #8a2be2;
+}
+
+section p, section li {
+    font-size: 1.05rem;
+    color: #e0e0f8;
+}
+
+/* Catálogo en rejilla */
+#CATALOGO {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* Tarjetas */
+.tarjeta {
+    background: rgba(72,61,139,0.15);
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 0 30px rgba(123,104,238,0.5);
+    transition: transform 0.5s, box-shadow 0.5s;
+    backdrop-filter: blur(10px);
+}
+
+.tarjeta:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 0 60px rgba(255,218,68,0.7), 0 0 30px rgba(138,43,226,0.5);
+}
+
+.tarjeta h3 {
+    color: #ffda44;
+    text-shadow: 0 0 15px #ffda44;
+    margin-bottom: 15px;
+}
+
+.tarjeta img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin-top: 15px;
+    box-shadow: 0 0 20px rgba(138,43,226,0.5);
+}
+
+/* Lists */
+ol, ul {
+    margin-left: 25px;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    background: rgba(28, 63, 149, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 25px 10px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(123,104,238,0.5) inset;
+}
+
+footer a {
+    color: #ffda44;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+footer a:hover {
+    text-shadow: 0 0 15px #ffda44;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav a {
+        margin: 8px 0;
+    }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header h2 {
+        font-size: 1rem;
+    }
+
+    section {
+        padding: 20px;
+    }
+}

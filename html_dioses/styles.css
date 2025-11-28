@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* Fondo con imagen y gradiente superpuesto con menos opacidad para más claridad */
+    background-image: 
+        linear-gradient(135deg, rgba(11, 43, 35, 0.35), rgba(27, 26, 18, 0.35)),
+        url('imagenes/fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.5); /* color pergamino */
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    padding: 36px 34px;
+    max-width: 680px;
+    width: 100%;
+    border: 6px solid rgba(184,134,11,0.12);
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    color: #482300; /* marrón oscuro */
+    margin-bottom: 6px;
+    font-size: 2.6em;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.subtitle {
+    text-align: center;
+    color: #6b5b3a;
+    margin-bottom: 26px;
+    font-size: 1em;
+}
+
+.links-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.link-card {
+    padding: 16px 22px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-left: 8px solid #b8860b; /* dorado */
+    border-radius: 10px;
+    text-decoration: none;
+    color: #5a4a2f;
+    cursor: not-allowed;
+    transition: all 0.2s ease;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1em;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.link-card:hover {
+    background: linear-gradient(180deg, rgba(255,250,240,1), #efe1c6);
+    border-left-color: #ffd24a;
+}
+
+.member-name {
+    display: block;
+    font-size: 1.05em;
+    margin-bottom: 6px;
+}
+
+.status {
+    font-size: 0.87em;
+    color: #8a7860;
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    color: #7a6b55;
+    font-size: 0.95em;
+}
+
+
+
+@media (max-width: 520px){
+    .container{padding:28px}
+    h1{font-size:1.8em}
+}
+

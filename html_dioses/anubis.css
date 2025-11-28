@@ -1,0 +1,832 @@
+
+
+/* Resetea márgenes, paddings y define border-box para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Define variables CSS (custom properties) para reutilizar valores en todo el documento */
+:root {
+    /* Colores principales de la paleta egipcia */
+    --azul-noche: #071428;
+    --turquesa: #00b3a3;
+    --dorado: #d4af37;
+    --arena: #f4e7cc;
+    --negro-anubis: #1a1a1a;
+    --texto-oscuro: #2b1907;
+    --texto-claro: #0f0b05;
+
+    /* Tamaños de fuente */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.9rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 2rem;
+    --font-size-3xl: 2.8rem;
+
+    /* Transiciones suave para animaciones */
+    --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ============================================================
+   2. ESTILOS DEL BODY (PÁGINA COMPLETA)
+============================================================ */
+
+body {
+    /* Fuentes: Poppins es más moderna, fallback a fuentes seguras del sistema */
+    font-family: 'Poppins', 'Trebuchet MS', system-ui, -apple-system, Arial, sans-serif;
+
+    /* Fondo base: azul noche profundo */
+    background-color: var(--azul-noche);
+
+    /* Gradientes múltiples para crear profundidad:
+       - Radial gradient para brillo en esquina superior izquierda (turquesa)
+       - Radial gradient para brillo en esquina inferior derecha (dorado tenue)
+       - Linear gradient para degradado vertical oscuro */
+    background-image:
+        radial-gradient(1200px 600px at 12% 12%, rgba(0, 179, 163, 0.08), transparent 15%),
+        radial-gradient(800px 500px at 88% 85%, rgba(212, 175, 55, 0.06), transparent 20%),
+        linear-gradient(180deg, #050f1a 0%, #0a1520 50%, #020814 100%);
+
+    /* Fijo para que el fondo no se mueva con el scroll */
+    background-attachment: fixed;
+
+    /* Color de texto por defecto */
+    color: var(--texto-oscuro);
+
+    /* Alto mínimo de 100vh (100% de la altura visible) */
+    min-height: 100vh;
+
+    /* Espaciado interior */
+    padding: 0;
+
+    /* Suaviza las fuentes (mejora la legibilidad) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Pseudo-elemento ::before: crea una capa animada de partículas */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0; /* Igual a top:0, right:0, bottom:0, left:0 */
+    z-index: 1; /* Capa superior pero bajo el contenido (z-index: 10+) */
+    pointer-events: none; /* Las partículas no interfieren con clics */
+
+    /* Patrón SVG repetido (jeroglíficos sutiles) */
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><g fill='none' stroke='%2300b3a3' stroke-width='1.5' opacity='0.08'><circle cx='50' cy='50' r='8'/><path d='M30 60 Q50 80 70 60' stroke-linecap='round'/><circle cx='150' cy='130' r='6'/></g></svg>");
+    background-repeat: repeat;
+    background-size: 240px 240px;
+
+    /* Animación sutil: las partículas se mueven lentamente */
+    animation: floatParticles 20s ease-in-out infinite;
+}
+
+/* Pseudo-elemento ::after: capa de overlay oscuro para mejorar legibilidad */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+
+    /* Degradado oscuro que oscurece más hacia los bordes */
+    background: radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+
+    /* Modo de mezcla para oscurecer sin tapar completamente */
+    mix-blend-mode: multiply;
+}
+
+/* ============================================================
+   3. ANIMACIONES GLOBALES
+============================================================ */
+
+/* Animación: partículas flotantes en el fondo */
+@keyframes floatParticles {
+    0% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(30px) translateX(20px);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.6;
+    }
+}
+
+/* Animación: entrada suave desde abajo con fade */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animación: brillo dorado pulsante (glow) */
+@keyframes goldenGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+    }
+}
+
+/* Animación: rotación lenta (para elementos decorativos) */
+@keyframes slowRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================================
+   4. CONTENEDOR PRINCIPAL
+============================================================ */
+
+.main-container {
+    /* Contenedor flexible para apilar secciones verticalmente */
+    display: flex;
+    flex-direction: column;
+
+    /* Ancho máximo para evitar que sea demasiado ancho en pantallas grandes */
+    max-width: 1200px;
+
+    /* Centro el contenedor en la pantalla */
+    margin: 0 auto;
+
+    /* Espacio interior */
+    padding: 0;
+
+    /* Asegura que el contenido esté por encima de las partículas (z-index > 2) */
+    position: relative;
+    z-index: 10;
+}
+
+/* ============================================================
+   5. SECCIÓN HERO (CABECERA PRINCIPAL)
+============================================================ */
+
+.hero-section {
+    /* Mínima altura para ocupar al menos la pantalla completa */
+    min-height: 100vh;
+
+    /* Flex para centrar contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* Fondo con gradiente y sombra interna */
+    background: linear-gradient(180deg,
+        rgba(7, 20, 40, 0.95) 0%,
+        rgba(5, 15, 26, 0.95) 50%,
+        rgba(2, 8, 20, 0.98) 100%);
+
+    /* Sombra interna para dar profundidad */
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+
+    /* Padding */
+    padding: 60px 30px;
+
+    /* Texto centrado */
+    text-align: center;
+
+    /* Animación de entrada */
+    animation: slideInUp 1s ease-out;
+
+    position: relative;
+}
+
+/* Navbar en la parte superior del hero */
+.navbar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    /* Flex para alinear contenido horizontalmente */
+    display: flex;
+    align-items: center;
+}
+
+/* Enlace "Volver" en el navbar */
+.back-link {
+    /* Color dorado */
+    color: var(--dorado);
+
+    /* Fuente serif elegante (Cinzel es más ceremonial) */
+    font-family: 'Cinzel', Georgia, serif;
+
+    /* Tamaño de fuente */
+    font-size: var(--font-size-base);
+
+    /* Sin subrayado */
+    text-decoration: none;
+
+    /* Transición suave al pasar el mouse */
+    transition: var(--transition);
+
+    /* Padding interno */
+    padding: 8px 12px;
+
+    /* Borde redondeado */
+    border-radius: 6px;
+
+    /* Efecto hover: más brillo */
+}
+
+.back-link:hover {
+    /* Cambio de color y sombra al pasar mouse */
+    color: #ffd24a;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+}
+
+/* Contenido principal del hero */
+.hero-content {
+    /* Flex para centrar todo verticalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    /* Animación de entrada con delay */
+    animation: slideInUp 1s ease-out 0.2s backwards;
+
+    gap: 20px;
+}
+
+/* Icono SVG del hero (Ankh) */
+.hero-icon {
+    /* Ancho y alto */
+    width: 140px;
+    height: 140px;
+
+    /* Animación continua de rotación */
+    animation: slowRotate 15s linear infinite;
+
+    /* Filtro: sombra dorada */
+    filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+
+    /* Margen inferior */
+    margin-bottom: 20px;
+}
+
+/* Título principal (h1) */
+.hero-section h1 {
+    /* Fuente ceremonial serif */
+    font-family: 'Cinzel', Georgia, serif;
+
+    /* Tamaño grande */
+    font-size: var(--font-size-3xl);
+
+    /* Peso extra bold */
+    font-weight: 900;
+
+    /* Color dorado brillante */
+    color: var(--dorado);
+
+    /* Espaciado entre letras */
+    letter-spacing: 4px;
+
+    /* Transformar a mayúsculas */
+    text-transform: uppercase;
+
+    /* Sombra de texto: efecto 3D */
+    text-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(212, 175, 55, 0.3);
+
+    /* Margen inferior */
+    margin-bottom: 10px;
+
+    /* Animación de glow */
+    animation: goldenGlow 3s ease-in-out infinite;
+}
+
+/* Subtítulo del hero */
+.hero-subtitle {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: var(--font-size-xl);
+    color: var(--turquesa);
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Descripción del hero */
+.hero-description {
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-lg);
+    color: var(--arena);
+    max-width: 700px;
+    line-height: 1.6;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   6. SECCIÓN INTRO (INFORMACIÓN SOBRE ANUBIS)
+============================================================ */
+
+.intro-section {
+    /* Padding (espacio interno) */
+    padding: 80px 40px;
+
+    /* Fondo con gradiente sutil */
+    background: linear-gradient(180deg,
+        rgba(245, 236, 202, 0.98) 0%,
+        rgba(243, 233, 200, 0.98) 100%);
+
+    /* Animación de entrada */
+    animation: slideInUp 1s ease-out 0.4s backwards;
+}
+
+/* Contenido de intro */
+.intro-content {
+    /* Ancho máximo */
+    max-width: 900px;
+
+    /* Centrado */
+    margin: 0 auto;
+}
+
+/* Títulos h2 en intro */
+.intro-section h2 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: var(--font-size-2xl);
+    color: var(--texto-oscuro);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--dorado);
+    padding-bottom: 15px;
+}
+
+/* Párrafos en intro */
+.intro-section p {
+    font-size: var(--font-size-lg);
+    color: var(--texto-claro);
+    line-height: 1.8;
+    margin-bottom: 25px;
+    text-align: justify;
+}
+
+/* ============================================================
+   7. SECCIÓN CARDS (GRID DE TARJETAS CON IMÁGENES)
+============================================================ */
+
+.cards-section {
+    padding: 80px 40px;
+    background: linear-gradient(180deg,
+        #fbf1da 0%,
+        #f3e9c8 100%);
+    animation: slideInUp 1s ease-out 0.6s backwards;
+}
+
+/* Título h2 en cards */
+.cards-section h2 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: var(--font-size-2xl);
+    color: var(--texto-oscuro);
+    text-align: center;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--dorado);
+    padding-bottom: 15px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid de cards: 2 columnas en pantalla grande, 1 en móvil */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Card individual */
+.card {
+    /* Flex para apilar imagen y contenido */
+    display: flex;
+    flex-direction: column;
+
+    /* Fondo blanco con borde redondeado */
+    background: white;
+    border-radius: 12px;
+
+    /* Sombra profunda para destacar */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+
+    /* Overflow: esconde contenido fuera del borde redondeado */
+    overflow: hidden;
+
+    /* Transición suave */
+    transition: var(--transition);
+
+    /* Animación de entrada escalonada */
+    animation: slideInUp 1s ease-out backwards;
+
+    /* Delays escalonados para cada card (si tienen clases nth-child) */
+}
+
+/* Delays para animación escalonada de cards */
+.card:nth-child(1) { animation-delay: 0.7s; }
+.card:nth-child(2) { animation-delay: 0.85s; }
+.card:nth-child(3) { animation-delay: 1s; }
+.card:nth-child(4) { animation-delay: 1.15s; }
+
+/* Efecto hover en cards: levanta la tarjeta */
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.25);
+}
+
+/* Imagen dentro de la card */
+.card-image {
+    /* Ancho completo */
+    width: 100%;
+
+    /* Alto fijo */
+    height: 250px;
+
+    /* Cubre el espacio sin distorsionarse */
+    object-fit: cover;
+
+    /* Transición suave */
+    transition: var(--transition);
+}
+
+/* Efecto hover en imagen: zoom */
+.card:hover .card-image {
+    transform: scale(1.08);
+    filter: brightness(0.95);
+}
+
+/* Contenido de la card (texto) */
+.card-content {
+    padding: 25px 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Títulos h3 en cards */
+.card-content h3 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: var(--font-size-lg);
+    color: var(--texto-oscuro);
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+/* Párrafos en cards */
+.card-content p {
+    font-size: var(--font-size-base);
+    color: #555;
+    line-height: 1.6;
+    text-align: left;
+    flex-grow: 1;
+}
+
+/* ============================================================
+   8. SECCIÓN FACTS (DATOS INTERESANTES)
+============================================================ */
+
+.facts-section {
+    padding: 80px 40px;
+    background: linear-gradient(180deg,
+        rgba(7, 20, 40, 0.95) 0%,
+        rgba(5, 15, 26, 0.95) 100%);
+    animation: slideInUp 1s ease-out 1.2s backwards;
+}
+
+/* Título h2 en facts */
+.facts-section h2 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: var(--font-size-2xl);
+    color: var(--dorado);
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 3px solid var(--turquesa);
+    padding-bottom: 15px;
+}
+
+/* Lista de facts */
+.facts-list {
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Item de la lista */
+.facts-list li {
+    /* Flex para alinear viñeta y texto */
+    display: flex;
+
+    /* Espaciado entre items */
+    margin-bottom: 25px;
+
+    /* Padding */
+    padding: 20px;
+
+    /* Fondo sutil */
+    background: rgba(212, 175, 55, 0.05);
+
+    /* Borde izquierdo dorado */
+    border-left: 4px solid var(--dorado);
+
+    /* Redondeado */
+    border-radius: 8px;
+
+    /* Transición */
+    transition: var(--transition);
+
+    /* Color de texto */
+    color: var(--arena);
+
+    /* Altura de línea para espaciado vertical */
+    line-height: 1.7;
+}
+
+/* Efecto hover en items */
+.facts-list li:hover {
+    background: rgba(212, 175, 55, 0.12);
+    transform: translateX(10px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+}
+
+/* Etiqueta strong (datos en negrita) */
+.facts-list strong {
+    color: var(--dorado);
+    margin-right: 8px;
+    font-weight: 700;
+}
+
+/* ============================================================
+   9. SECCIÓN CTA (LLAMADA A LA ACCIÓN)
+============================================================ */
+
+.cta-section {
+    padding: 80px 40px;
+    background: linear-gradient(180deg,
+        #fbf1da 0%,
+        #f3e9c8 100%);
+    animation: slideInUp 1s ease-out 1.35s backwards;
+    text-align: center;
+}
+
+/* Contenido de CTA */
+.cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Títulos h2 en CTA */
+.cta-section h2 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: var(--font-size-2xl);
+    color: var(--texto-oscuro);
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Párrafo en CTA */
+.cta-section p {
+    font-size: var(--font-size-lg);
+    color: var(--texto-claro);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Botón CTA */
+.cta-button {
+    /* Inline-block para que sea clickeable y tenga ancho específico */
+    display: inline-block;
+
+    /* Padding (espacio interno del botón) */
+    padding: 18px 40px;
+
+    /* Fondo con gradiente dorado */
+    background: linear-gradient(135deg, var(--dorado), #ffd24a);
+
+    /* Color de texto */
+    color: var(--negro-anubis);
+
+    /* Fuente */
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+
+    /* Sin decoración de enlace */
+    text-decoration: none;
+
+    /* Redondeado */
+    border-radius: 8px;
+
+    /* Borde */
+    border: 2px solid var(--dorado);
+
+    /* Transición suave */
+    transition: var(--transition);
+
+    /* Sombra */
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+
+    /* Cursor al pasar mouse */
+    cursor: pointer;
+
+    /* Transformación de origen para efectos */
+    transform-origin: center;
+}
+
+/* Efecto hover en botón */
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, #ffd24a, #ffe44d);
+}
+
+/* Efecto activo (click) en botón */
+.cta-button:active {
+    transform: scale(0.98);
+}
+
+/* ============================================================
+   10. FOOTER (PIE DE PÁGINA)
+============================================================ */
+
+.page-footer {
+    /* Fondo oscuro */
+    background: var(--azul-noche);
+
+    /* Padding */
+    padding: 30px 40px;
+
+    /* Texto centrado */
+    text-align: center;
+
+    /* Color de texto dorado */
+    color: var(--dorado);
+
+    /* Fuente */
+    font-family: 'Poppins', sans-serif;
+    font-size: var(--font-size-sm);
+
+    /* Margen superior */
+    margin-top: 0;
+
+    /* Z-index para asegurar que esté visible */
+    position: relative;
+    z-index: 10;
+
+    /* Animación de entrada */
+    animation: slideInUp 1s ease-out 1.5s backwards;
+}
+
+/* Párrafo en footer */
+.page-footer p {
+    margin: 0;
+}
+
+/* ============================================================
+   11. RESPONSIVIDAD (MEDIA QUERIES)
+============================================================ */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.4rem;
+    }
+
+    .intro-section,
+    .cards-section,
+    .facts-section,
+    .cta-section {
+        padding: 60px 30px;
+    }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 80vh;
+        padding: 40px 20px;
+    }
+
+    .hero-icon {
+        width: 100px;
+        height: 100px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+
+    .hero-description {
+        font-size: var(--font-size-base);
+    }
+
+    .intro-section h2,
+    .cards-section h2,
+    .facts-section h2,
+    .cta-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .intro-section p,
+    .cta-section p {
+        font-size: var(--font-size-base);
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .card-image {
+        height: 200px;
+    }
+
+    .intro-section,
+    .cards-section,
+    .facts-section,
+    .cta-section {
+        padding: 40px 20px;
+    }
+
+    .facts-list li {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .navbar {
+        top: 10px;
+        left: 10px;
+    }
+
+    .back-link {
+        font-size: var(--font-size-xs);
+        padding: 6px 10px;
+    }
+
+    .hero-section h1 {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+    }
+
+    .hero-subtitle {
+        font-size: var(--font-size-base);
+    }
+
+    .intro-section h2,
+    .cards-section h2,
+    .facts-section h2,
+    .cta-section h2 {
+        font-size: 1.4rem;
+    }
+
+    .cta-button {
+        padding: 14px 30px;
+        font-size: var(--font-size-base);
+    }
+
+    .facts-list li {
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ============================================================
+   FIN DEL CSS - ¡DISFRUTA DE ANUBIS!
+============================================================ */
