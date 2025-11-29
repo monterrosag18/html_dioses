@@ -1,0 +1,182 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===========================
+    FONDO
+=========================== */
+body {
+    font-family: Arial, sans-serif;
+    color: white;
+
+    background-image: url("body-carnior.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ===========================
+    HEADER
+=========================== */
+header {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+    text-shadow: 0 0 20px rgb(255, 255, 255);
+}
+
+h1 {
+    font-size: 80px;
+    color: rgb(202, 158, 0);
+}
+
+h2 {
+    margin-top: -15px;
+    margin-left: 5px;
+    font-size: 35px;
+    color: white;
+}
+
+/* ===========================
+    NAVEGACIÓN
+=========================== */
+nav {
+    width: 100%;
+    max-width: 1200px;
+
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(4px);
+}
+
+nav ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+nav a {
+    color: rgb(255, 230, 150);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* ===========================
+    CONTENEDOR DOS COLUMNAS
+=========================== */
+.contenedor {
+    width: 100%;
+    max-width: 1200px;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+
+    padding: 40px;
+}
+
+/* ===========================
+    MAIN SECTIONS
+=========================== */
+section {
+    margin-bottom: 50px;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.45);
+    border-left: 4px solid rgb(202, 158, 0);
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+}
+
+section h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: rgb(255, 210, 60);
+}
+
+/* GRID DE TARJETAS DEL ATLAS */
+.grid-atlas {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 210, 60, 0.4);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    background: rgba(255, 210, 60, 0.2);
+    transform: scale(1.03);
+}
+
+.card h4 {
+    color: rgb(255, 210, 60);
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+/* ===========================
+    ASIDE
+=========================== */
+aside {
+    background: rgba(0, 0, 0, 0.55);
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 210, 60, 0.6);
+
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+aside h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: rgb(255, 210, 60);
+}
+
+aside ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* ===========================
+    FOOTER
+=========================== */
+footer {
+    margin-top: 40px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    font-size: 18px;
+    width: 100%;
+    color: white;
+}
+
+footer a {
+    color: rgb(255, 210, 60);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: white;
+}
