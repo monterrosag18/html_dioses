@@ -9,7 +9,7 @@ body {
     /* Fondo con imagen y gradiente superpuesto con menos opacidad para más claridad */
     background-image: 
         linear-gradient(135deg, rgba(11, 43, 35, 0.35), rgba(27, 26, 18, 0.35)),
-        url('/imagenes/Hailuo_Video_puedes\ hacer\ que\ todos\ muevan\ _450953581139910661.gif');
+        url('/imagenes/fondo-index.gif');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
