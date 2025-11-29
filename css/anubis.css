@@ -1,0 +1,233 @@
+/* Reset ligero */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#0b0b0b; color:#efe9d6; line-height:1.5; }
+
+/* Variables para laterales y contenido */
+:root{
+  --side-width: 20vw;   /* ancho relativo de las imágenes laterales */
+  --side-min: 140px;    /* ancho mínimo en px */
+  --side-max: 360px;    /* ancho máximo en px */
+  --content-max: 1100px; /* ancho máximo del contenido central */
+  --content-gap: 1rem;  /* espacio extra entre contenido y laterales */
+}
+
+/* --- Aplicar padding lateral al body para reservar espacio para las imágenes --- */
+body {
+  padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap));
+  padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap));
+  min-height: 100vh;
+}
+
+/* Contenedores laterales fijos */
+.side {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: clamp(var(--side-min), var(--side-width), var(--side-max));
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+  filter: saturate(.95) contrast(.95);
+}
+
+/* Imagen izquierda */
+.side-left {
+  left: 0;
+  background-image: url('/imagenes/anubis/anubisnoche.gif');
+  background-position: left center;
+  box-shadow: inset -140px 0 140px -100px rgba(0,0,0,0.65);
+}
+
+/* Imagen derecha */
+.side-right {
+  right: 0;
+  background-image: url('/imagenes/anubis/anubisdia.gif');
+  background-position: right center;
+  box-shadow: inset 140px 0 140px -100px rgba(0,0,0,0.65);
+}
+
+/* Reflejo sutil en laterales */
+.side::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -30%;
+  height: 60%;
+  background-image: inherit;
+  background-size: cover;
+  background-position: inherit;
+  transform: scaleY(-1) translateY(10%);
+  filter: blur(8px) saturate(.7);
+  opacity: 0.12;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+/* Clase reutilizable: botones simples */
+.btn {
+  display:inline-block;
+  background: transparent;
+  color:#f2d16b;
+  padding:0.45rem 0.8rem;
+  border-radius:8px;
+  text-decoration:none;
+  border:1px solid rgba(242,209,107,0.12);
+  transition: background .18s ease, transform .18s ease;
+}
+.btn:hover { background: rgba(242,209,107,0.06); transform: translateY(-3px); }
+
+/* Header: mantener encima de las sides y centrado */
+.site-header {
+  padding:1rem;
+  border-bottom:1px solid rgba(255,255,255,0.02);
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg, rgba(11,11,11,0.95), rgba(11,11,11,0.9));
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor interno del header: ancho controlado y centrado */
+.header-inner {
+  width: 100%;
+  max-width: var(--content-max);
+  padding: 0 1rem;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+}
+
+/* Título y subtítulo */
+.title-block { display:flex; flex-direction:column; }
+.title-block h1 { font-size:1.6rem; color:#f2d16b; }
+.subtitle { color:#cfc3a0; font-size:0.95rem; margin-top:0.25rem; }
+
+/* Nav: centrado dentro del header-inner */
+.main-nav {
+  display:flex;
+  gap:0.6rem;
+  align-items:center;
+}
+.nav-link { color:#d9c98f; text-decoration:none; padding:0.4rem 0.7rem; border-radius:6px; transition: background .15s ease; }
+.nav-link:hover { background: rgba(255,255,255,0.02); color:#fff; }
+
+/* Main: centrado entre las sides sin desplazar visualmente el contenido.
+   El ancho máximo y margin auto mantienen el contenido en el centro de la ventana. */
+main {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 1rem auto;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+/* Sections */
+.section { padding:1rem; margin-bottom:1rem; border-radius:8px; background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); border:1px solid rgba(255,255,255,0.02); }
+.section h2 { color:#f7e4a8; margin-bottom:0.6rem; }
+
+/* Grid para tarjetas */
+.cards-grid {
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:1rem;
+  margin-top:0.8rem;
+}
+
+/* Tarjeta con imagen en posición moderada (lado izquierdo) */
+.card {
+  display:flex;
+  gap:1rem;
+  align-items:flex-start;
+  background: rgba(255,255,255,0.01);
+  padding:0.9rem;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.02);
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+
+/* Contenedor de imagen: tamaño moderado, mantiene proporción */
+.card-image {
+  flex: 0 0 120px;
+  height: 80px;
+  overflow: hidden;
+  border-radius:8px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,0.02);
+}
+
+/* Imagen dentro de la tarjeta: cubre el contenedor sin deformar */
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+}
+
+/* Cuerpo de la tarjeta */
+.card-body { flex: 1 1 auto; }
+.card-title { color:#f2d16b; font-size:1rem; margin-bottom:0.35rem; }
+.card-desc { color:#d6caa3; font-size:0.95rem; }
+
+/* Hover sutil en tarjetas */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+  border-color: rgba(242,209,107,0.12);
+}
+
+/* Aside */
+.aside-block { padding:1rem; }
+
+/* Footer */
+.site-footer {
+  margin-top:1.2rem;
+  padding:1rem;
+  border-top:1px solid rgba(255,255,255,0.02);
+  background:transparent;
+  position: relative;
+  z-index: 2;
+}
+.footer-inner { max-width:var(--content-max); margin:0 auto; color:#cfc3a0; display:flex; flex-direction:column; gap:0.4rem; padding:0 1rem; }
+
+/* Media queries para responsividad */
+@media (min-width: 1400px) {
+  .poster { height: 420px; }
+  .poster-title { font-size: 2.4rem; }
+}
+
+@media (min-width: 1100px) {
+  .cards-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
+  .main-nav { justify-content:center; flex-wrap:wrap; gap:0.4rem; }
+  :root { --side-width: 18vw; --side-max: 260px; }
+  body {
+    padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + 0.8rem);
+    padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + 0.8rem);
+  }
+}
+
+@media (max-width: 720px) {
+  /* ocultar laterales en móviles para priorizar lectura */
+  .side { display: none; }
+  body { padding-left: 1rem; padding-right: 1rem; }
+  main { margin: 1rem auto; }
+}
+
+@media (max-width: 520px) {
+  .header-inner { flex-direction:column; align-items:flex-start; gap:0.4rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .card { flex-direction: row; gap:0.75rem; }
+  .card-image { flex: 0 0 100px; height: 70px; }
+  .title-block h1 { font-size:1.25rem; }
+  .subtitle { font-size:0.9rem; }
+}

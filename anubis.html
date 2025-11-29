@@ -1,22 +1,122 @@
-<!DOCTYPE html>
-<!-- Plantilla limpia: archivo reiniciado. Empieza aquí tu nuevo contenido. -->
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Anubis — Plantilla</title>
-  <!-- Enlaza CSS si lo deseas -->
-  <link rel="stylesheet" href="anubis.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anubis — Mundo del Guardián de las Sombras</title>
+  <link rel="stylesheet" href="/css/anubis.css" />
 </head>
 <body>
+  <!-- Imágenes laterales fijas -->
+  <div class="side side-left" aria-hidden="true"></div>
+  <div class="side side-right" aria-hidden="true"></div>
 
-  <!-- CONTENIDO: reemplaza este bloque con tu nueva página -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="title-block">
+        <h1>Anubis</h1>
+        <p class="subtitle">El Guardián de las Sombras — juez de almas y señor de los umbrales</p>
+      </div>
+    </div>
+
+    <nav class="main-nav" aria-label="Navegación del mundo Anubis">
+      <a href="/index.html" class="nav-link">Home page</a>
+      <a href="#atlas" class="nav-link">Atlas</a>
+      <a href="#reglas" class="nav-link">Reglas</a>
+    </nav>
+  </header>
+
   <main>
-    <section style="padding:48px; text-align:center;">
-      <h1>Anubis</h1>
-      <p>Plantilla limpia: empieza a escribir aquí tu contenido nuevo.</p>
+    <section id="introduccion" class="section intro">
+      <h2>Introducción al mundo</h2>
+      <p>
+        Anubis es un mundo liminal donde la noche y la memoria convergen. Aquí las almas
+        atraviesan corredores de ébano y los juramentos se sellan con luz de luna.
+      </p>
+      <p>
+        Lo que hace único a este mundo es su mezcla de ritual y lógica: cada tránsito
+        entre planos está regido por símbolos, guardianes y pruebas que miden la verdad
+        del viajero.
+      </p>
     </section>
+
+    <section id="atlas" class="section atlas">
+      <h2>Atlas del Guardián</h2>
+      <p class="atlas-intro">Galería de lugares, seres y artefactos esenciales en Anubis.</p>
+
+      <div class="cards-grid" role="list">
+        <article class="card" role="listitem">
+          <div class="card-image">
+            <img src="/imagenes/anubis/umbral.png" alt="Umbral de Ébano">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Umbral de Ébano</h3>
+            <p class="card-desc">Portal principal que separa el mundo de los vivos del corredor de juicios.</p>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="card-image">
+            <img src="/imagenes/anubis/balanza.png" alt="Balanzas de Memoria">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Balanzas de Memoria</h3>
+            <p class="card-desc">Instrumento que pesa recuerdos contra actos; la verdad pesa más.</p>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="card-image">
+            <img src="/imagenes/anubis/clanes.png" alt="Hermanos de la Noche">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Hermanos de la Noche</h3>
+            <p class="card-desc">Clan de guardianes que patrullan los corredores y guían a los puros.</p>
+          </div>
+        </article>
+
+        <article class="card" role="listitem">
+          <div class="card-image">
+            <img src="/imagenes/anubis/pergamino.png" alt="Pergaminos de Juicio">
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Pergaminos de Juicio</h3>
+            <p class="card-desc">Registros que contienen las pruebas que cada alma debe enfrentar.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="reglas" class="section rules">
+      <h2>Sistema y reglas del mundo</h2>
+      <p>Las normas que rigen Anubis están diseñadas para mantener el equilibrio entre memoria y justicia.</p>
+      <ol>
+        <li>Todo tránsito requiere una ofrenda simbólica que represente la verdad del viajero.</li>
+        <li>Las Balanzas de Memoria pesan recuerdos y actos; el peso determina la fase del juicio.</li>
+        <li>Los guardianes pueden imponer pruebas adicionales si detectan contradicciones.</li>
+        <li>Los artefactos rituales solo funcionan si su portador acepta la verdad que revelan.</li>
+        <li>Las decisiones de las Salas de Veredicto son finales; solo la Cúpula de Sombras puede reabrir un caso.</li>
+      </ol>
+    </section>
+
+    <aside class="section aside-block">
+      <h2>Curiosidades</h2>
+      <ul>
+        <li>Los Hermanos de la Noche no hablan; comunican con gestos y símbolos.</li>
+        <li>La Llave de Umbral cambia de forma según la luna.</li>
+        <li>Algunos peregrinos vuelven con fragmentos de memoria que alteran su mundo de origen.</li>
+      </ul>
+    </aside>
   </main>
 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p><strong>by</strong> Carlos Andres Monterrosa Gallego</p>
+      <p><strong>Año:</strong> 2025</p>
+      <p>
+        <a class="btn" href="/" target="_blank" rel="noopener">Repositorio GitHub</a>
+      </p>
+    </div>
+  </footer>
 </body>
 </html>
