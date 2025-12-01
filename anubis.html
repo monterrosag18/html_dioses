@@ -1,38 +1,72 @@
 <!doctype html>
-<html lang="es">
+<!-- Declaración HTML5 - Le indica al navegador que es un documento HTML5 / HTML5 Document Declaration -->
+<html lang="en">
+<!-- Elemento raíz - Define el idioma de la página / Root element - Sets the language -->
+
 <head>
+  <!-- Sección de encabezado - Contiene metadatos y recursos sobre la página / Head section with metadata -->
+  
+  <!-- Codificación de caracteres - UTF-8 para mostrar caracteres especiales correctamente / Character encoding -->
   <meta charset="utf-8" />
+  
+  <!-- Configuración de viewport - Hace la página responsiva y móvil-amigable / Responsive mobile-friendly settings -->
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <!-- Título de la página - Se muestra en la pestaña del navegador / Page title shown in browser tab -->
   <title>Anubis — World of the Shadow Guardian</title>
+  
+  <!-- Enlace a hoja de estilos externa - Carga todo el diseño visual de esta página / External stylesheet link -->
   <link rel="stylesheet" href="/css/anubis.css" />
 </head>
+
 <body>
-  <!-- Imágenes laterales fijas -->
+  <!-- Contenedor principal del cuerpo - Todo el contenido visible va aquí / Main body container -->
+  
+  <!-- Imágenes laterales (izquierda y derecha) - Son imágenes de fondo decorativas que enmarcan el contenido.
+       aria-hidden="true" hace que los lectores de pantalla las ignoren, ya que son puramente decorativas / Side decorative images -->
   <div class="side side-left" aria-hidden="true"></div>
   <div class="side side-right" aria-hidden="true"></div>
 
+  <!-- Encabezado - La sección superior de la página con el título y menú de navegación / Header with title and navigation -->
   <header class="site-header">
     <div class="header-inner">
+      <!-- Contenedor para el título principal y subtítulo / Container for title and subtitle -->
       <div class="title-block">
+        <!-- Encabezado principal - El título más grande e importante de la página / Main page heading -->
         <h1>Anubis</h1>
+        
+        <!-- Subtítulo - Una descripción más pequeña bajo el título principal / Subtitle under main title -->
         <p class="subtitle">The Guardian of Shadows — judge of souls and lord of thresholds</p>
       </div>
     </div>
 
-    <nav class="main-nav" aria-label="Navegación del mundo Anubis">
+    <!-- Menú de navegación - Enlaces para navegar entre diferentes secciones del sitio / Navigation menu -->
+    <nav class="main-nav" aria-label="Main navigation for Anubis world">
+      <!-- Enlace a la página principal / Link to homepage -->
       <a href="/index.html" class="nav-link">Home page</a>
+      
+      <!-- Enlace a la sección atlas/galería en esta página / Link to atlas gallery section -->
       <a href="#atlas" class="nav-link">Atlas</a>
+      
+      <!-- Enlace a la sección de reglas en esta página / Link to the rules section -->
       <a href="#reglas" class="nav-link">Rules</a>
     </nav>
   </header>
 
+  <!-- Área de contenido principal - Aquí va todo lo importante de la página / Main content area -->
   <main>
+    <!-- Sección de introducción - Presenta el mundo y atrae el interés en Anubis / Introduction section -->
     <section id="introduccion" class="section intro">
+      <!-- Encabezado secundario - Introduce el concepto principal / Secondary heading -->
       <h2>Introduction to the world</h2>
+      
+      <!-- Primer párrafo - Describe la atmósfera básica y tema de Anubis / First paragraph -->
       <p>
         Anubis is a liminal world where night and memory converge. Here, souls
         traverse ebony corridors and oaths are sealed by moonlight.
       </p>
+      
+      <!-- Segundo párrafo - Explica qué hace único e interesante este mundo / Second paragraph -->
       <p>
         What makes this world unique is its blend of ritual and logic: every 
         transition between planes is governed by symbols, guardians, and tests 
@@ -40,24 +74,38 @@
       </p>
     </section>
 
+    <!-- Sección Atlas - Una galería de lugares, seres y objetos importantes en el mundo Anubis / Atlas section -->
     <section id="atlas" class="section atlas">
+      <!-- Encabezado de sección / Section heading -->
       <h2>Guardian's Atlas</h2>
+      
+      <!-- Texto introductorio para la galería / Introduction text for gallery -->
       <p class="atlas-intro">Gallery of essential places, beings and artifacts in Anubis.</p>
 
+      <!-- Contenedor de grid para las tarjetas - role="list" hace esto accesible / Grid container for cards -->
       <div class="cards-grid" role="list">
+        
+        <!-- Primera tarjeta - Umbral de Ébano / First card - Ebony Threshold -->
         <article class="card" role="listitem">
+          <!-- Contenedor para la imagen de la tarjeta / Container for card image -->
           <div class="card-image">
-            <img src="/imagenes/anubis/umbral.png" alt="Umbral de Ébano">
+            <!-- Imagen del Umbral de Ébano / Image of Ebony Threshold -->
+            <img src="/imagenes/anubis/umbral.png" alt="Ebony Threshold portal">
           </div>
+          <!-- Contenido de la tarjeta - título y descripción / Card content - title and description -->
           <div class="card-body">
+            <!-- Título de la tarjeta / Card title -->
             <h3 class="card-title">Ebony Threshold</h3>
+            <!-- Descripción de la tarjeta - qué trata este lugar / Card description -->
             <p class="card-desc">Main portal that separates the world of the living from the courtroom.</p>
           </div>
         </article>
 
+        <!-- Segunda tarjeta - Balanzas de Memoria / Second card - Memory Scales -->
         <article class="card" role="listitem">
           <div class="card-image">
-            <img src="/imagenes/anubis/balanza.png" alt="Balanzas de Memoria">
+            <!-- Imagen de las Balanzas de Memoria / Image of Memory Scales -->
+            <img src="/imagenes/anubis/balanza.png" alt="Memory Scales for judgment">
           </div>
           <div class="card-body">
             <h3 class="card-title">Memory Scales</h3>
@@ -65,9 +113,11 @@
           </div>
         </article>
 
+        <!-- Tercera tarjeta - Hermanos de la Noche / Third card - Brothers of the Night -->
         <article class="card" role="listitem">
           <div class="card-image">
-            <img src="/imagenes/anubis/clanes.png" alt="Hermanos de la Noche">
+            <!-- Imagen del clan Hermanos de la Noche / Image of Brothers clan -->
+            <img src="/imagenes/anubis/clanes.png" alt="Brothers of the Night guardians">
           </div>
           <div class="card-body">
             <h3 class="card-title">Brothers of the Night</h3>
@@ -75,9 +125,11 @@
           </div>
         </article>
 
+        <!-- Cuarta tarjeta - Pergaminos de Juicio / Fourth card - Scrolls of Judgment -->
         <article class="card" role="listitem">
           <div class="card-image">
-            <img src="/imagenes/anubis/pergamino.png" alt="Pergaminos de Juicio">
+            <!-- Imagen de los pergaminos de juicio / Image of judgment scrolls -->
+            <img src="/imagenes/anubis/pergamino.png" alt="Scrolls of Judgment records">
           </div>
           <div class="card-body">
             <h3 class="card-title">Scrolls of Judgment</h3>
@@ -87,34 +139,65 @@
       </div>
     </section>
 
+    <!-- Sección de Reglas - Explica las leyes y mecánicas del mundo Anubis / Rules section -->
     <section id="reglas" class="section rules">
+      <!-- Encabezado de sección / Section heading -->
       <h2>System and rules of the world</h2>
+      
+      <!-- Párrafo introductorio explicando el propósito de estas reglas / Intro paragraph -->
       <p>The rules governing Anubis are designed to maintain a balance between memory and justice.</p>
+      
+      <!-- Lista ordenada - Muestra las reglas numeradas (1-5 automáticamente) / Ordered list -->
       <ol>
+        <!-- Regla 1 - Requisito de ofrenda simbólica / Rule 1 -->
         <li>Every journey requires a symbolic offering that represents the truth of the traveler.</li>
+        
+        <!-- Regla 2 - Cómo funcionan las balanzas / Rule 2 -->
         <li>The Scales of Memory weigh memories and actions; the weight determines the phase of the judgment.</li>
+        
+        <!-- Regla 3 - Pruebas de guardianes / Rule 3 -->
         <li>The guardians can impose additional tests if they detect contradictions.</li>
+        
+        <!-- Regla 4 - Artefactos rituales / Rule 4 -->
         <li>Ritual artifacts only work if their bearer accepts the truth they reveal.</li>
+        
+        <!-- Regla 5 - Veredictos finales / Rule 5 -->
         <li>The decisions of the Verdict Rooms are final; only the Shadow Dome can reopen a case.</li>
       </ol>
     </section>
 
+    <!-- Sección Aside - Datos curiosos y curiosidades sobre el mundo Anubis / Aside section - Fun facts -->
     <aside class="section aside-block">
+      <!-- Encabezado del aside / Aside heading -->
       <h2>Curiosities</h2>
+      
+      <!-- Lista desordenada - Hechos interesantes aleatorios sobre Anubis / Unordered list -->
       <ul>
+        <!-- Curiosidad 1 - Cómo se comunican los Hermanos / Curiosity 1 -->
         <li>The Brothers of the Night do not speak; they communicate with gestures and symbols.</li>
+        
+        <!-- Curiosidad 2 - Objeto mágico que cambia / Curiosity 2 -->
         <li>The Threshold Key changes shape according to the moon.</li>
+        
+        <!-- Curiosidad 3 - Consecuencias de visitar / Curiosity 3 -->
         <li>Some pilgrims return with fragments of memory that alter their world of origin.</li>
       </ul>
     </aside>
   </main>
 
+  <!-- Pie de página - Sección inferior con información de derechos de autor y creador / Footer section -->
   <footer class="site-footer">
+    <!-- Contenedor del contenido del pie de página / Container for footer content -->
     <div class="footer-inner">
+      <!-- Crédito al creador / Credit to the creator -->
       <p><strong>by</strong> Carlos Andres Monterrosa Gallego</p>
-      <p><strong>Año:</strong> 2025</p>
+      
+      <!-- Año en que se hizo el sitio / Year the site was made -->
+      <p><strong>Year:</strong> 2025</p>
+      
+      <!-- Enlace al repositorio de GitHub donde vive el código / Link to GitHub repository -->
       <p>
-        <a class="btn" href="/" target="_blank" rel="noopener">Repositorio GitHub</a>
+        <a class="btn" href="/" target="_blank" rel="noopener">GitHub Repository</a>
       </p>
     </div>
   </footer>
