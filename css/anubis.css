@@ -76,7 +76,7 @@ body {
 /* Imagen del lado izquierdo - Muestra la versión nocturna de Anubis / Left side image */
 .side-left {
   left: 0; /* Alineado en el lado izquierdo / Aligned to left side */
-  background-image: url('/imagenes/anubis/anubisnoche.gif'); /* Ruta de la imagen de fondo / Background image path */
+  background-image: url('../imagenes/anubis/anubisnoche.gif'); /* Ruta de la imagen de fondo / Background image path */
   background-position: left center; /* Posición de la imagen - izquierda y centrada verticalmente / Image position */
   /* Agrega efecto de desvanecimiento en el borde derecho / Fade-out effect on right edge */
   box-shadow: inset -140px 0 140px -100px rgba(0,0,0,0.65); /* Sombra interior que crea efecto degradado / Inner shadow for gradient effect */
@@ -85,7 +85,7 @@ body {
 /* Imagen del lado derecho - Muestra la versión diurna de Anubis / Right side image */
 .side-right {
   right: 0; /* Alineado en el lado derecho / Aligned to right side */
-  background-image: url('/imagenes/anubis/anubisdia.gif'); /* Ruta de la imagen de fondo / Background image path */
+  background-image: url('../imagenes/anubis/anubisdia.gif'); /* Ruta de la imagen de fondo / Background image path */
   background-position: right center; /* Posición de la imagen - derecha y centrada verticalmente / Image position */
   /* Agrega efecto de desvanecimiento en el borde izquierdo / Fade-out effect on left edge */
   box-shadow: inset 140px 0 140px -100px rgba(0,0,0,0.65); /* Sombra interior que crea efecto degradado / Inner shadow for gradient effect */

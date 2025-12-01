@@ -39,7 +39,7 @@ h1, h2, h3 {
     text-align: center;
     border-bottom: 3px solid var(--color-oro);
 
-    background-image:  url(/imagenes/odin/banner2.gif);
+    background-image:  url(../imagenes/odin/banner2.gif);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
