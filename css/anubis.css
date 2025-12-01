@@ -1,452 +1,382 @@
+/* ANUBIS.CSS
+   Estilos para la página de Anubis - Tema oscuro con toques dorados
+   Styles for Anubis page - Dark theme with gold touches
+   */
 
-/* ========================================
-   PARTE 1: RESETS GLOBALES Y ESTILOS BASE
-   PART 1: GLOBAL RESETS & BASE STYLES
-   ======================================== */
-
-/* Reset - Elimina márgenes y rellenos predeterminados de todos los elementos / Remove default margins and padding */
+/* Reset básico para empezar limpio - quita márgenes y espacios por defecto
+   Basic reset to start clean - removes default margins and spacing */
 * { 
-  box-sizing: border-box; /* Incluye padding y border en el cálculo del tamaño / Includes padding and border in size calculation */
-  margin: 0; /* Elimina espacios externos / Removes outer spacing */
-  padding: 0; /* Elimina espacios internos / Removes inner spacing */
+  box-sizing: border-box; /* Incluye padding y border en el tamaño total del elemento / Includes padding and border in total element size */
+  margin: 0; /* Sin márgenes externos / No outer margins */
+  padding: 0; /* Sin relleno interno / No inner padding */
 }
 
-/* Estilos base para los elementos html y body / Base styling for html and body */
+/* Config general del sitio - aplica a toda la página
+   General site config - applies to entire page */
 html, body { 
-  height: 100%; /* Define que ocupen el 100% del alto de la ventana / Sets full viewport height */
-  /* Usa fuentes del sistema para mejor rendimiento y consistencia / System fonts for performance */
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; /* Establece la familia de fuentes principal / Sets main font family */
-  /* Fondo oscuro para coincidir con el tema Anubis / Dark background matching theme */
-  background: #0b0b0b; /* Color de fondo muy oscuro (casi negro) / Very dark background color */
-  /* Color de texto beige claro para legibilidad / Light beige text for readability */
-  color: #efe9d6; /* Color del texto en toda la página / Text color throughout page */
-  /* Altura de línea para mejor legibilidad / Line height for readability */
-  line-height: 1.5; /* Espacio entre líneas de texto / Spacing between text lines */
-}
-
-/* ========================================
-   PARTE 2: VARIABLES CSS Y DISEÑO
-   PART 2: CSS VARIABLES & LAYOUT
-   ======================================== */
-
-/* Variables CSS - Hacen fácil ajustar el diseño sin cambiar muchos lugares / CSS Variables for easy adjustments */
+  height: 100%; /* Ocupa toda la altura de la ventana / Takes full window height */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; /* Usa las fuentes del sistema para mejor rendimiento / Uses system fonts for better performance */
+  background: #0b0b0b; /* Fondo casi negro para el tema oscuro / Almost black background for dark theme */
+  color: #efe9d6; /* Texto beige claro, fácil de leer sobre fondo oscuro / Light beige text, easy to read on dark background */
+/* Variables para ajustar fácil el diseño - se pueden cambiar una vez y afectan todo
+   Variables to easily adjust layout - change once and affects everything */
 :root {
-  /* Ancho de las imágenes laterales relativo al viewport / Width of side images relative to viewport */
-  --side-width: 20vw;   
-  
-  /* Ancho mínimo para imágenes laterales (en píxeles) / Minimum width for side images */
-  --side-min: 140px;    
-  
-  /* Ancho máximo para imágenes laterales (en píxeles) / Maximum width for side images */
-  --side-max: 360px;    
-  
-  /* Ancho máximo para el contenido principal / Maximum width for main content */
-  --content-max: 1100px; 
-  
-  /* Espaciado extra entre contenido e imágenes laterales / Extra spacing between content and sides */
-  --content-gap: 1rem;  
+  --side-width: 20vw; /* Ancho de imágenes laterales en porcentaje del viewport / Side images width as viewport percentage */
+  --side-min: 140px; /* Ancho mínimo de imágenes laterales / Minimum width for side images */
+  --side-max: 360px; /* Ancho máximo de imágenes laterales / Maximum width for side images */
+  --content-max: 1100px; /* Ancho máximo del contenido central / Maximum width for central content */
+  --content-gap: 1rem; /* Separación entre contenido e imágenes / Gap between content and images */
 }
 
-/* Relleno del body - Reserva espacio a izquierda y derecha para las imágenes laterales / Body padding reserves side space */
+/* El body tiene padding para dejar espacio a las imágenes laterales
+   The body has padding to leave space for side images */
 body {
-  padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap)); /* Espaciado izquierdo que se adapta al tamaño de la ventana / Left padding responsive to window size */
-  padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap)); /* Espaciado derecho que se adapta al tamaño de la ventana / Right padding responsive to window size */
-  min-height: 100vh; /* Altura mínima es la altura completa de la ventana / Minimum height is full viewport */
-}
-
-/* ========================================
-   PARTE 3: IMÁGENES LATERALES (Izquierda y Derecha)
-   PART 3: SIDE IMAGES (Left & Right)
-   ======================================== */
-
-/* Estilos base para ambos contenedores laterales - Son fijos y nunca se desplazan / Base styling for side containers */
+  padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap)); /* Calcula espacio izquierdo dinámicamente / Calculates left space dynamically */
+  padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap)); /* Calcula espacio derecho dinámicamente / Calculates right space dynamically */
+  min-height: 100vh; /* Mínimo la altura completa de la pantalla / Minimum full screen height */
+} padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap));
+  padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap));
+  min-height: 100vh;
+/* Las imágenes laterales - quedan fijas mientras scrolleas
+   Side images - stay fixed while you scroll */
 .side {
-  position: fixed; /* Posición fija en la pantalla, no se desplaza al hacer scroll / Fixed position on screen */
-  top: 0; /* Alineado en la parte superior / Aligned to top */
-  height: 100vh; /* Altura completa del viewport / Full viewport height */
-  width: clamp(var(--side-min), var(--side-width), var(--side-max)); /* Ancho responsivo / Responsive width */
-  background-size: cover; /* La imagen cubre todo el contenedor / Image covers the container */
-  background-position: center; /* La imagen se centra / Image is centered */
-  background-repeat: no-repeat; /* La imagen no se repite / Image doesn't repeat */
-  z-index: 0; /* Detrás de todo el contenido / Behind all content */
-  pointer-events: none; /* No interfiere con los clics / Doesn't interfere with clicks */
-  filter: saturate(.95) contrast(.95); /* Colores ligeramente apagados / Slightly muted colors */
+  position: fixed; /* Posición fija, no se mueve con el scroll / Fixed position, doesn't move with scroll */
+  top: 0; /* Pegado arriba / Stuck to top */
+  height: 100vh; /* Altura completa de la ventana / Full window height */
+  width: clamp(var(--side-min), var(--side-width), var(--side-max)); /* Ancho flexible entre mínimo y máximo / Flexible width between min and max */
+  background-size: cover; /* La imagen cubre todo el espacio / Image covers entire space */
+  background-position: center; /* Imagen centrada / Centered image */
+  background-repeat: no-repeat; /* No repetir la imagen / Don't repeat image */
+  z-index: 0; /* Por detrás del contenido / Behind the content */
+  pointer-events: none; /* No interfiere con clics del mouse / Doesn't interfere with mouse clicks */
+  filter: saturate(.95) contrast(.95); /* Colores ligeramente más opacos / Slightly muted colors */
 }
 
-/* Imagen del lado izquierdo - Muestra la versión nocturna de Anubis / Left side image */
 .side-left {
-  left: 0; /* Alineado en el lado izquierdo / Aligned to left side */
-  background-image: url('../imagenes/anubis/anubisnoche.gif'); /* Ruta de la imagen de fondo / Background image path */
-  background-position: left center; /* Posición de la imagen - izquierda y centrada verticalmente / Image position */
-  /* Agrega efecto de desvanecimiento en el borde derecho / Fade-out effect on right edge */
-  box-shadow: inset -140px 0 140px -100px rgba(0,0,0,0.65); /* Sombra interior que crea efecto degradado / Inner shadow for gradient effect */
+  left: 0; /* Pegado al borde izquierdo / Stuck to left edge */
+  background-image: url('../imagenes/anubis/anubisnoche.gif'); /* GIF de Anubis nocturno / Nighttime Anubis GIF */
+  background-position: left center; /* Alineado a la izquierda verticalmente centrado / Left-aligned, vertically centered */
+  box-shadow: inset -140px 0 140px -100px rgba(0,0,0,0.65); /* Sombra interior que crea fade hacia la derecha / Inner shadow creates fade to the right */
 }
 
-/* Imagen del lado derecho - Muestra la versión diurna de Anubis / Right side image */
 .side-right {
-  right: 0; /* Alineado en el lado derecho / Aligned to right side */
-  background-image: url('../imagenes/anubis/anubisdia.gif'); /* Ruta de la imagen de fondo / Background image path */
-  background-position: right center; /* Posición de la imagen - derecha y centrada verticalmente / Image position */
-  /* Agrega efecto de desvanecimiento en el borde izquierdo / Fade-out effect on left edge */
-  box-shadow: inset 140px 0 140px -100px rgba(0,0,0,0.65); /* Sombra interior que crea efecto degradado / Inner shadow for gradient effect */
+  right: 0; /* Pegado al borde derecho / Stuck to right edge */
+  background-image: url('../imagenes/anubis/anubisdia.gif'); /* GIF de Anubis diurno / Daytime Anubis GIF */
+  background-position: right center; /* Alineado a la derecha verticalmente centrado / Right-aligned, vertically centered */
+  box-shadow: inset 140px 0 140px -100px rgba(0,0,0,0.65); /* Sombra interior que crea fade hacia la izquierda / Inner shadow creates fade to the left */
+} background-position: right center;
+  box-shadow: inset 140px 0 140px -100px rgba(0,0,0,0.65);
 }
-
-/* Efecto de reflejo en imágenes laterales - Crea un reflejo espejo sutil en la parte inferior / Reflection effect */
+/* Efecto de reflejo abajo de las imágenes - usa un pseudo-elemento
+   Reflection effect below images - uses a pseudo-element */
 .side::after {
-  content: ""; /* Crea contenido vacío usando el pseudo-elemento ::after / Creates empty content using pseudo-element */
-  position: absolute; /* Posicionamiento absoluto relativo al contenedor padre / Absolute position relative to parent */
-  left: 0; /* Alineado a la izquierda / Aligned to left */
-  right: 0; /* Alineado a la derecha / Aligned to right */
-  bottom: -30%; /* Posicionado 30% abajo del contenedor / Positioned 30% below container */
-  height: 60%; /* Ocupa el 60% de altura / Takes 60% height */
-  background-image: inherit; /* Usa la misma imagen que el padre / Uses same image as parent */
-  background-size: cover; /* La imagen cubre el contenedor / Image covers container */
-  background-position: inherit; /* Posición heredada del padre / Inherits position from parent */
-  transform: scaleY(-1) translateY(10%); /* Voltea verticalmente y se mueve 10% hacia arriba / Flips vertically and moves */
-  filter: blur(8px) saturate(.7); /* Desenfoque de 8px y saturación reducida / Blur and reduced saturation */
-  opacity: 0.12; /* Muy transparente (12% visible) / Very transparent (12% opacity) */
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)); /* Gradiente que desvanece / Fading gradient */
-  pointer-events: none; /* No interfiere con eventos del ratón / Doesn't interfere with mouse events */
+  content: ""; /* Crea contenido vacío, necesario para que aparezca el pseudo-elemento / Creates empty content, needed for pseudo-element to appear */
+  position: absolute; /* Se posiciona respecto al contenedor padre .side / Positioned relative to parent .side container */
+  left: 0; /* Empieza desde el borde izquierdo / Starts from left edge */
+  right: 0; /* Termina en el borde derecho / Ends at right edge */
+  bottom: -30%; /* Se coloca 30% abajo del contenedor / Positioned 30% below container */
+  height: 60%; /* Ocupa 60% de altura / Takes up 60% height */
+  background-image: inherit; /* Hereda la misma imagen del padre / Inherits same image from parent */
+  background-size: cover; /* Cubre todo el espacio / Covers entire space */
+  background-position: inherit; /* Hereda la posición del padre / Inherits position from parent */
+  transform: scaleY(-1) translateY(10%); /* Voltea verticalmente (reflejo) y mueve un poco / Flips vertically (reflection) and moves slightly */
+  filter: blur(8px) saturate(.7); /* Desenfoque de 8px y menos saturación / 8px blur and less saturation */
+  opacity: 0.12; /* Muy transparente, apenas visible / Very transparent, barely visible */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)); /* Gradiente que hace fade de arriba a abajo / Gradient that fades from top to bottom */
+  pointer-events: none; /* No interfiere con eventos del mouse / Doesn't interfere with mouse events */
+} pointer-events: none;
 }
-
-/* ========================================
-   PARTE 4: BOTONES
-   PART 4: BUTTONS
-   ======================================== */
-
-/* Estilos base de botón/enlace / Base button/link styling */
+/* Botones - estilo general para los enlaces tipo botón
+   Buttons - general style for button-like links */
 .btn {
-  display: inline-block; /* Mostrado como bloque en línea, permite width/height pero no nuevo renglón / Inline-block display */
+  display: inline-block; /* Se comporta como bloque pero en línea con el texto / Behaves as block but inline with text */
   background: transparent; /* Fondo transparente / Transparent background */
-  color: #f2d16b; /* Color de texto dorado / Gold text color */
-  padding: 0.45rem 0.8rem; /* Espaciado interno - vertical y horizontal / Internal spacing */
-  border-radius: 8px; /* Esquinas redondeadas de 8 píxeles / Rounded corners */
-  text-decoration: none; /* Elimina el subrayado de enlace / Removes link underline */
-  border: 1px solid rgba(242,209,107,0.12); /* Borde de 1px con color dorado muy sutil / Subtle gold border */
-  transition: background .18s ease, transform .18s ease; /* Transición suave para efectos hover / Smooth transitions */
+  color: #f2d16b; /* Color dorado para el texto / Gold color for text */
+  padding: 0.45rem 0.8rem; /* Espaciado interno: arriba/abajo 0.45rem, izq/der 0.8rem / Internal spacing: top/bottom 0.45rem, left/right 0.8rem */
+  border-radius: 8px; /* Esquinas redondeadas / Rounded corners */
+  text-decoration: none; /* Sin subrayado de enlace / No link underline */
+  border: 1px solid rgba(242,209,107,0.12); /* Borde dorado muy sutil / Very subtle gold border */
+  transition: background .18s ease, transform .18s ease; /* Transición suave en hover / Smooth transition on hover */
 }
 
-/* Estado hover del botón - Obtiene un fondo sutil y se mueve hacia arriba / Button hover state */
 .btn:hover { 
-  background: rgba(242,209,107,0.06); /* Fondo dorado muy tenue al pasar el ratón / Faint gold background on hover */
-  transform: translateY(-3px); /* Se mueve 3px hacia arriba al pasar el ratón / Moves up on hover */
-}
-
-/* ========================================
-   PARTE 5: ENCABEZADO Y NAVEGACIÓN
-   PART 5: HEADER & NAVIGATION
-   ======================================== */
-
-/* Encabezado principal - Pegajoso para que se quede en la parte superior al desplazarse / Main header - Sticky */
+  background: rgba(242,209,107,0.06); /* Fondo dorado muy tenue al pasar el mouse / Very faint gold background on mouse over */
+  transform: translateY(-3px); /* Se mueve 3px hacia arriba / Moves 3px upward */
+} transform: translateY(-3px);
+/* Header sticky que se queda arriba - siempre visible al hacer scroll
+   Sticky header that stays on top - always visible when scrolling */
 .site-header {
-  padding: 1rem; /* Espaciado interno de 1rem en todos los lados / Internal spacing on all sides */
-  border-bottom: 1px solid rgba(255,255,255,0.02); /* Línea de borde inferior muy sutil / Subtle bottom border line */
-  position: sticky; /* Pegajoso - se queda visible al hacer scroll / Sticky position on scroll */
-  top: 0; /* Se pega en la parte superior / Sticks to top */
-  /* Fondo degradado para profundidad / Gradient background for depth */
-  background: linear-gradient(180deg, rgba(11,11,11,0.95), rgba(11,11,11,0.9)); /* Gradiente de arriba a abajo / Top to bottom gradient */
-  z-index: 3; /* Por encima de la mayoría del contenido / Above most content */
-  display: flex; /* Usa flexbox para distribuir elementos / Uses flexbox layout */
-  justify-content: center; /* Centra los elementos horizontalmente / Centers content horizontally */
+  padding: 1rem; /* Espaciado interno de 1rem por todos lados / 1rem internal spacing on all sides */
+  border-bottom: 1px solid rgba(255,255,255,0.02); /* Línea sutil en la parte de abajo / Subtle line at the bottom */
+  position: sticky; /* Se queda fijo al hacer scroll / Stays fixed when scrolling */
+  top: 0; /* Se pega arriba de la pantalla / Sticks to top of screen */
+  background: linear-gradient(180deg, rgba(11,11,11,0.95), rgba(11,11,11,0.9)); /* Gradiente oscuro con transparencia / Dark gradient with transparency */
+  z-index: 3; /* Por encima de casi todo / Above almost everything */
+  display: flex; /* Usa flexbox para alinear / Uses flexbox for alignment */
+  justify-content: center; /* Centra el contenido horizontalmente / Centers content horizontally */
 }
 
-/* Contenedor interno del encabezado - Controla el ancho y centrado / Inner header container */
 .header-inner {
-  width: 100%; /* Ocupa el 100% del ancho disponible / Takes full available width */
-  max-width: var(--content-max); /* Ancho máximo controlado por la variable CSS / Max width from CSS variable */
-  padding: 0 1rem; /* Espaciado horizontal interno / Horizontal internal spacing */
-  display: flex; /* Usa flexbox / Uses flexbox */
-  align-items: center; /* Alinea verticalmente los elementos al centro / Vertically centers items */
-  justify-content: space-between; /* Distribuye elementos con espacio entre ellos / Spaces items apart */
+  width: 100%; /* Ocupa todo el ancho disponible / Takes full available width */
+  max-width: var(--content-max); /* No pasa del ancho máximo definido / Doesn't exceed defined max width */
+  padding: 0 1rem; /* Espaciado horizontal / Horizontal spacing */
+  display: flex; /* Flexbox para organizar título y nav / Flexbox to organize title and nav */
+  align-items: center; /* Alinea verticalmente al centro / Vertically aligns to center */
+  justify-content: space-between; /* Separa título y nav a los extremos / Separates title and nav to extremes */
 }
 
-/* Bloque de título y subtítulo / Title and subtitle block */
 .title-block { 
-  display: flex; /* Usa flexbox para alinear elementos / Uses flexbox layout */
-  flex-direction: column; /* Apila elementos verticalmente / Stacks items vertically */
+  display: flex; /* Flexbox para organizar título y subtítulo / Flexbox to organize title and subtitle */
+  flex-direction: column; /* Los apila verticalmente / Stacks them vertically */
 }
 
-/* Título principal del sitio / Main site title */
 .title-block h1 { 
-  font-size: 1.6rem; /* Tamaño de fuente de 1.6rem / Font size */
+  font-size: 1.6rem; /* Tamaño grande para el título / Large size for title */
   color: #f2d16b; /* Color dorado / Gold color */
 }
 
-/* Texto del subtítulo / Subtitle text */
 .subtitle { 
   color: #cfc3a0; /* Dorado más claro que el título / Lighter gold than title */
-  font-size: 0.95rem; /* Tamaño de fuente más pequeño que el título / Smaller than title */
-  margin-top: 0.25rem; /* Espaciado superior entre título y subtítulo / Top spacing from title */
-}
-
-/* Contenedor del menú de navegación / Navigation menu container */
+  font-size: 0.95rem; /* Un poco más chico que el título / Bit smaller than title */
+  margin-top: 0.25rem; /* Pequeño espacio arriba / Small space on top */
+} font-size: 0.95rem;
+/* Nav menu - menú de navegación principal
+   Nav menu - main navigation menu */
 .main-nav {
-  display: flex; /* Usa flexbox para distribuir elementos / Uses flexbox */
-  gap: 0.6rem; /* Espaciado entre elementos del menú / Spacing between menu items */
-  align-items: center; /* Alinea verticalmente los elementos / Vertically aligns items */
+  display: flex; /* Flexbox para colocar los links en fila / Flexbox to place links in a row */
+  gap: 0.6rem; /* Espacio entre cada link / Space between each link */
+  align-items: center; /* Alinea verticalmente al centro / Vertically aligns to center */
 }
 
-/* Enlaces de navegación individual / Individual nav links */
 .nav-link { 
   color: #d9c98f; /* Color dorado claro / Light gold color */
-  text-decoration: none; /* Elimina subrayado de enlace / Removes underline */
-  padding: 0.4rem 0.7rem; /* Espaciado interno del enlace / Internal padding */
-  border-radius: 6px; /* Esquinas ligeramente redondeadas / Slightly rounded corners */
-  transition: background .15s ease; /* Transición suave para efecto hover / Smooth hover transition */
+  text-decoration: none; /* Sin subrayado / No underline */
+  padding: 0.4rem 0.7rem; /* Relleno interno para hacer el área clickeable más grande / Internal padding to make clickable area bigger */
+  border-radius: 6px; /* Esquinas suavemente redondeadas / Softly rounded corners */
+  transition: background .15s ease; /* Transición suave del fondo / Smooth background transition */
 }
 
-/* Estado hover de enlace de nav - Fondo sutil aparece / Nav link hover */
 .nav-link:hover { 
-  background: rgba(255,255,255,0.02); /* Fondo blanco muy tenue al pasar el ratón / Faint white background */
-  color: #fff; /* Color de texto se vuelve blanco / Text becomes white */
-}
-
-/* ========================================
-   PARTE 6: ÁREA DE CONTENIDO PRINCIPAL
-   PART 6: MAIN CONTENT AREA
-   ======================================== */
-
-/* Contenedor de contenido principal - Centrado y ancho controlado / Main content wrapper */
+  background: rgba(255,255,255,0.02); /* Fondo muy sutil al pasar el mouse / Very subtle background on hover */
+  color: #fff; /* El texto se vuelve blanco / Text becomes white */
+}nav-link:hover { 
+  background: rgba(255,255,255,0.02);
+/* Contenedor principal - donde va todo el contenido importante
+   Main container - where all important content goes */
 main {
-  width: 100%; /* Ocupa el 100% del ancho disponible / Full available width */
-  max-width: var(--content-max); /* Ancho máximo para no hacer texto muy ancho / Max width for readability */
-  margin: 1rem auto; /* Espaciado exterior y centra horizontalmente / Outer spacing and centers */
-  padding: 0 1rem; /* Espaciado interno horizontal / Internal horizontal spacing */
-  position: relative; /* Posicionamiento relativo para z-index / Relative for z-index */
-  z-index: 2; /* Por encima de imágenes laterales / Above side images */
-  box-sizing: border-box; /* Incluye padding en el cálculo de ancho / Includes padding in width */
+  width: 100%; /* Ocupa todo el ancho disponible / Takes all available width */
+  max-width: var(--content-max); /* Pero no pasa del máximo / But doesn't exceed maximum */
+  margin: 1rem auto; /* 1rem arriba/abajo, centrado horizontal / 1rem top/bottom, horizontally centered */
+  padding: 0 1rem; /* Espaciado horizontal / Horizontal spacing */
+  position: relative; /* Permite usar z-index / Allows using z-index */
+  z-index: 2; /* Por encima de las imágenes laterales / Above side images */
+  box-sizing: border-box; /* Incluye padding en el ancho total / Includes padding in total width */
 }
 
-/* ========================================
-   PARTE 7: SECCIONES Y CONTENEDORES GENERALES
-   PART 7: SECTIONS & GENERAL CONTAINERS
-   ======================================== */
-
-/* Estilos de sección base - Se aplica a todos los elementos section / Base section styling */
+/* Secciones generales - cada bloque de contenido
+   General sections - each content block */
 .section { 
   padding: 1rem; /* Espaciado interno / Internal spacing */
-  margin-bottom: 1rem; /* Espaciado exterior inferior / Bottom external spacing */
-  border-radius: 8px; /* Esquinas redondeadas / Rounded corners */
-  /* Fondo degradado muy sutil / Very subtle gradient background */
-  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); /* Gradiente de arriba a abajo / Top to bottom gradient */
-  /* Borde apenas visible / Barely visible border */
-  border: 1px solid rgba(255,255,255,0.02); /* Línea de borde muy tenue / Very faint border */
+  margin-bottom: 1rem; /* Espacio abajo para separar secciones / Bottom space to separate sections */
+  border-radius: 8px; /* Bordes redondeados / Rounded borders */
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent); /* Gradiente muy sutil de arriba a abajo / Very subtle gradient from top to bottom */
+  border: 1px solid rgba(255,255,255,0.02); /* Borde apenas visible / Barely visible border */
 }
 
-/* Encabezados de sección / Section headings */
 .section h2 { 
-  color: #f7e4a8; /* Dorado claro / Light gold */
-  margin-bottom: 0.6rem; /* Espaciado inferior entre título y contenido / Bottom spacing */
-}
-
-/* ========================================
-   PARTE 8: GRID DE TARJETAS (Sección Atlas)
-   PART 8: CARDS GRID (Atlas Section)
-   ======================================== */
-
-/* Diseño de grid para tarjetas - Muestra 2 columnas en escritorio / Grid layout for cards */
+  color: #f7e4a8; /* Dorado claro para títulos de sección / Light gold for section titles */
+  margin-bottom: 0.6rem; /* Espacio abajo del título / Space below title */
+/* Grid de tarjetas - organiza las tarjetas en columnas
+   Cards grid - organizes cards in columns */
 .cards-grid {
-  display: grid; /* Usa CSS Grid para diseño de cuadrícula / Uses CSS Grid layout */
+  display: grid; /* Usa CSS Grid para crear columnas / Uses CSS Grid to create columns */
   grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales / 2 equal columns */
-  gap: 1rem; /* Espaciado entre tarjetas / Spacing between cards */
-  margin-top: 0.8rem; /* Espaciado superior / Top margin */
+  gap: 1rem; /* Espacio entre tarjetas / Space between cards */
+  margin-top: 0.8rem; /* Espacio arriba del grid / Space above grid */
 }
 
-/* Estilos de tarjeta individual / Individual card styling */
+/* Cada tarjeta - muestra un lugar o artefacto
+   Each card - shows a place or artifact */
 .card {
-  display: flex; /* Usa flexbox para distribución / Uses flexbox */
-  gap: 1rem; /* Espaciado entre imagen y texto / Spacing between image and text */
-  align-items: flex-start; /* Alinea elementos al inicio / Aligns items to start */
+  display: flex; /* Flexbox para poner imagen y texto lado a lado / Flexbox to put image and text side by side */
+  gap: 1rem; /* Espacio entre imagen y texto / Space between image and text */
+  align-items: flex-start; /* Alinea arriba / Aligns to top */
   background: rgba(255,255,255,0.01); /* Fondo apenas visible / Barely visible background */
-  padding: 0.9rem; /* Espaciado interno de la tarjeta / Internal card padding */
-  border-radius: 10px; /* Esquinas redondeadas / Rounded corners */
+  padding: 0.9rem; /* Espaciado interno / Internal spacing */
+  border-radius: 10px; /* Esquinas bien redondeadas / Well rounded corners */
   border: 1px solid rgba(255,255,255,0.02); /* Borde sutil / Subtle border */
-  /* Transiciones suaves para efectos hover / Smooth transitions for hover effects */
-  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
-}
-
-/* Contenedor de imagen de tarjeta / Card image container */
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; /* Transiciones suaves para el hover / Smooth transitions for hover */
 .card-image {
-  flex: 0 0 120px; /* Ancho fijo de 120px, no crece ni se encoge / Fixed 120px width */
-  height: 80px; /* Alto de 80px / Height of 80px */
-  overflow: hidden; /* Oculta contenido que sale del contenedor / Hides overflow */
+  flex: 0 0 120px; /* No crece, no encoge, siempre 120px de ancho / Doesn't grow, doesn't shrink, always 120px wide */
+  height: 80px; /* Altura fija / Fixed height */
+  overflow: hidden; /* Oculta lo que se sale del contenedor / Hides what goes outside container */
   border-radius: 8px; /* Esquinas redondeadas / Rounded corners */
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); /* Degradado de fondo sutil / Subtle gradient */
-  display: flex; /* Usa flexbox / Uses flexbox */
-  align-items: center; /* Centra verticalmente / Vertically centers */
-  justify-content: center; /* Centra horizontalmente / Horizontally centers */
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); /* Gradiente sutil de fondo / Subtle background gradient */
+  display: flex; /* Flexbox para centrar la imagen / Flexbox to center image */
+  align-items: center; /* Centra verticalmente / Centers vertically */
+  justify-content: center; /* Centra horizontalmente / Centers horizontally */
   border: 1px solid rgba(255,255,255,0.02); /* Borde sutil / Subtle border */
 }
 
-/* Imágenes dentro de tarjetas - Llenan el contenedor sin distorsión / Images inside cards */
 .card-image img {
-  width: 100%; /* Ocupa el 100% del ancho del contenedor / Full container width */
-  height: 100%; /* Ocupa el 100% del alto del contenedor / Full container height */
-  object-fit: cover; /* Se recorta para mantener proporción / Crops to maintain aspect ratio */
-  display: block; /* Mostrado como bloque / Displayed as block */
+  width: 100%; /* Ocupa todo el ancho del contenedor / Takes full container width */
+  height: 100%; /* Ocupa toda la altura del contenedor / Takes full container height */
+  object-fit: cover; /* Recorta la imagen para que llene sin deformar / Crops image to fill without distorting */
+  display: block; /* Quita espacio extra abajo de la imagen / Removes extra space below image */
 }
 
-/* Cuerpo de tarjeta/contenido de texto / Card body/text content */
 .card-body { 
-  flex: 1 1 auto; /* Toma todo el espacio disponible / Takes all available space */
+  flex: 1 1 auto; /* Crece para ocupar el espacio restante / Grows to occupy remaining space */
 }
 
-/* Título de tarjeta / Card title */
 .card-title { 
   color: #f2d16b; /* Color dorado / Gold color */
-  font-size: 1rem; /* Tamaño de fuente / Font size */
-  margin-bottom: 0.35rem; /* Espaciado inferior entre título y descripción / Bottom spacing */
+  font-size: 1rem; /* Tamaño estándar / Standard size */
+  margin-bottom: 0.35rem; /* Pequeño espacio antes de la descripción / Small space before description */
 }
 
-/* Texto de descripción de tarjeta / Card description text */
 .card-desc { 
-  color: #d6caa3; /* Dorado-marrón claro / Light brown-gold */
-  font-size: 0.95rem; /* Tamaño de fuente ligeramente más pequeño / Slightly smaller font */
-}
-
-/* Efecto hover de tarjeta - Se eleva y agrega sombra / Card hover effect */
+  color: #d6caa3; /* Dorado más claro para la descripción / Lighter gold for description */
+  font-size: 0.95rem; /* Un poquito más chico / A bit smaller */
+} font-size: 1rem;
+  margin-bottom: 0.35rem;
+/* Hover de las tarjetas - efecto al pasar el mouse
+   Card hover - effect when mouse passes over */
 .card:hover {
-  transform: translateY(-6px); /* Se mueve 6px hacia arriba al pasar el ratón / Moves up on hover */
-  box-shadow: 0 12px 30px rgba(0,0,0,0.6); /* Agrega sombra debajo de la tarjeta / Adds shadow below card */
-  border-color: rgba(242,209,107,0.12); /* El borde se vuelve visible / Border becomes visible */
+  transform: translateY(-6px); /* Se eleva 6px / Lifts 6px */
+  box-shadow: 0 12px 30px rgba(0,0,0,0.6); /* Sombra grande abajo / Large shadow below */
+  border-color: rgba(242,209,107,0.12); /* El borde se hace más visible / Border becomes more visible */
 }
 
-/* Texto de introducción del atlas / Atlas intro text */
 .atlas-intro {
-  color: #d6caa3; /* Color dorado-marrón claro / Light brown-gold color */
-  font-size: 0.95rem; /* Tamaño de fuente / Font size */
+  color: #d6caa3; /* Color dorado claro / Light gold color */
+  font-size: 0.95rem; /* Tamaño un poco reducido / Slightly reduced size */
 }
 
-/* ========================================
-   PARTE 9: ASIDE Y MISCELÁNEOS
-   PART 9: ASIDE & MISCELLANEOUS
-   ======================================== */
-
-/* Estilos del bloque aside / Aside block styling */
 .aside-block { 
-  padding: 1rem; 
+  padding: 1rem; /* Espaciado interno / Internal spacing */
 }
 
-/* ========================================
-   PARTE 10: PIE DE PÁGINA
-   PART 10: FOOTER
-   ======================================== */
-
-/* Contenedor del pie de página / Footer container */
+/* Footer - pie de página con mis datos
+   Footer - page footer with my info */
 .site-footer {
-  margin-top: 1.2rem; /* Espaciado superior / Top margin */
-  padding: 1rem; /* Espaciado interno / Internal padding */
-  border-top: 1px solid rgba(255,255,255,0.02); /* Línea superior sutil / Subtle top line */
-  background: transparent; /* Fondo transparente / Transparent background */
-  position: relative; /* Posicionamiento relativo / Relative positioning */
-  z-index: 2; /* Por encima de otras capas / Above other layers */
+  margin-top: 1.2rem; /* Espacio arriba para separar del contenido / Top space to separate from content */
+  padding: 1rem; /* Espaciado interno / Internal spacing */
+  border-top: 1px solid rgba(255,255,255,0.02); /* Línea sutil arriba / Subtle line on top */
+  background: transparent; /* Sin fondo / No background */
+  position: relative; /* Permite z-index / Allows z-index */
+  z-index: 2; /* Por encima de imágenes laterales / Above side images */
 }
 
-/* Contenido interno del pie de página / Footer inner content */
 .footer-inner { 
-  max-width: var(--content-max); /* Ancho máximo controlado / Max width controlled */
-  margin: 0 auto; /* Centra horizontalmente / Centers horizontally */
-  color: #cfc3a0; /* Texto dorado-marrón claro / Light brown-gold text */
-  display: flex; /* Usa flexbox / Uses flexbox */
-  flex-direction: column; /* Apila verticalmente / Stacks vertically */
-  gap: 0.4rem; /* Espaciado entre elementos / Spacing between items */
-  padding: 0 1rem; /* Espaciado horizontal interno / Horizontal internal padding */
-}
+  max-width: var(--content-max); /* Ancho máximo / Maximum width */
+  margin: 0 auto; /* Centrado horizontal / Horizontally centered */
+  color: #cfc3a0; /* Color dorado claro / Light gold color */
+  display: flex; /* Flexbox para organizar / Flexbox to organize */
+  flex-direction: column; /* Elementos apilados verticalmente / Elements stacked vertically */
+  gap: 0.4rem; /* Espacio entre elementos / Space between elements */
+  padding: 0 1rem; /* Espaciado horizontal / Horizontal spacing */
+} max-width: var(--content-max);
+/* RESPONSIVE - Adaptaciones para diferentes tamaños de pantalla
+   RESPONSIVE - Adaptations for different screen sizes */
 
-/* ========================================
-   PARTE 11: DISEÑO RESPONSIVO
-   PART 11: RESPONSIVE DESIGN
-   ======================================== */
-
-/* Pantallas grandes - Aumenta grid de tarjetas a 4 columnas / Large screens */
+/* Pantallas grandes (monitores) - para PCs con monitores grandes
+   Large screens (monitors) - for PCs with big monitors */
 @media (min-width: 1400px) {
   .poster { 
-    height: 420px; /* Altura del poster para pantallas muy grandes / Poster height */
+    height: 420px; /* Más alto en pantallas grandes / Taller on large screens */
   }
+  
   .poster-title { 
-    font-size: 2.4rem; /* Título más grande en pantallas grandes / Larger title */
+    font-size: 2.4rem; /* Título más grande / Bigger title */
   }
 }
 
-/* Pantallas mediano-grandes - Grid de tarjetas se vuelve 4 columnas / Medium-large screens */
+/* Desktops normales - para computadoras de escritorio estándar
+   Normal desktops - for standard desktop computers */
 @media (min-width: 1100px) {
   .cards-grid { 
-    grid-template-columns: repeat(4, 1fr); /* Cambia a 4 columnas / Changes to 4 columns */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de tarjetas / 4 card columns */
   }
 }
 
-/* Pantallas medias - Ajusta para tablets y desktops más pequeños / Medium screens */
+/* Tablets y laptops chicas - pantallas medianas
+   Tablets and small laptops - medium screens */
 @media (max-width: 900px) {
   .cards-grid { 
-    grid-template-columns: repeat(2, 1fr); /* Vuelve a 2 columnas / Back to 2 columns */
+    grid-template-columns: repeat(2, 1fr); /* Solo 2 columnas / Only 2 columns */
   }
   
   .main-nav { 
-    justify-content: center; /* Centra el menú / Centers menu */
-    flex-wrap: wrap; /* Permite que se envuelva / Allows wrapping */
-    gap: 0.4rem; /* Espaciado reducido entre elementos / Reduced spacing */
+    justify-content: center; /* Nav centrado / Centered nav */
+    flex-wrap: wrap; /* Permite que bajen de línea / Allows wrapping */
+    gap: 0.4rem; /* Menos espacio entre links / Less space between links */
   }
   
-  /* Hace las imágenes laterales un poco más pequeñas / Make side images smaller */
   :root { 
-    --side-width: 18vw; /* Reduce el ancho relativo / Reduces relative width */
-    --side-max: 260px; /* Reduce el máximo / Reduces maximum */
+    --side-width: 18vw; /* Imágenes laterales más angostas / Narrower side images */
+    --side-max: 260px; /* Reducción del ancho máximo / Reduced max width */
   }
   
   body {
-    padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + 0.8rem); /* Padding ajustado / Adjusted padding */
-    padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + 0.8rem); /* Padding ajustado / Adjusted padding */
+    padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + 0.8rem); /* Recalcula padding / Recalculates padding */
+    padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + 0.8rem); /* Recalcula padding / Recalculates padding */
   }
 }
 
-/* Pantallas pequeñas - Tablets y teléfonos grandes / Small screens */
+/* Tablets y móviles grandes - pantallas chicas
+   Tablets and large mobiles - small screens */
 @media (max-width: 720px) {
-  /* Oculta imágenes laterales para ahorrar espacio para contenido / Hide side images */
   .side { 
-    display: none; /* No se muestra / Not displayed */
+    display: none; /* Oculta imágenes laterales / Hides side images */
   }
   
   body { 
-    padding-left: 1rem; /* Padding reducido / Reduced padding */
-    padding-right: 1rem; /* Padding reducido / Reduced padding */
+    padding-left: 1rem; /* Padding mínimo / Minimum padding */
+    padding-right: 1rem; /* Padding mínimo / Minimum padding */
   }
   
   main { 
-    margin: 1rem auto; /* Margen centralizado / Centered margin */
+    margin: 1rem auto; /* Margen estándar / Standard margin */
   }
 }
 
-/* Pantallas muy pequeñas - Teléfonos / Extra small screens */
+/* Móviles - celulares
+   Mobiles - cell phones */
 @media (max-width: 520px) {
-  /* El encabezado se apila verticalmente / Header stacks vertically */
   .header-inner { 
-    flex-direction: column; /* Apila elementos verticalmente / Stacks items vertically */
-    align-items: flex-start; /* Alinea al inicio / Aligns to start */
-    gap: 0.4rem; /* Espaciado reducido / Reduced spacing */
+    flex-direction: column; /* Header en vertical / Vertical header */
+    align-items: flex-start; /* Alineado a la izquierda / Left aligned */
+    gap: 0.4rem; /* Espacio entre elementos / Space between elements */
   }
   
-  /* Grid de tarjetas se vuelve una sola columna / Cards grid becomes single column */
   .cards-grid { 
-    grid-template-columns: 1fr; /* Una sola columna / Single column */
+    grid-template-columns: 1fr; /* Solo 1 columna / Only 1 column */
   }
   
-  /* Diseño de tarjeta se ajusta para pantallas pequeñas / Card layout adjusts */
   .card { 
-    flex-direction: row; /* Elementos en fila / Items in row */
-    gap: 0.75rem; /* Espaciado entre elementos / Spacing between items */
+    flex-direction: row; /* Imagen y texto en fila / Image and text in row */
+    gap: 0.75rem; /* Espacio entre imagen y texto / Space between image and text */
   }
   
   .card-image { 
-    flex: 0 0 100px; /* Ancho fijo más pequeño / Smaller fixed width */
-    height: 70px; /* Alto más pequeño / Smaller height */
+    flex: 0 0 100px; /* Imagen más chica / Smaller image */
+    height: 70px; /* Menos altura / Less height */
   }
   
-  /* Los títulos se hacen más pequeños / Titles get smaller */
   .title-block h1 { 
-    font-size: 1.25rem; /* Tamaño de título reducido / Reduced title size */
+    font-size: 1.25rem; /* Título más pequeño / Smaller title */
   }
   
   .subtitle { 
-    font-size: 0.9rem; /* Tamaño de subtítulo reducido / Reduced subtitle size */
+    font-size: 0.9rem; /* Subtítulo más pequeño / Smaller subtitle */
+  }
+} 
+  .title-block h1 { 
+    font-size: 1.25rem;
+  }
+  
+  .subtitle { 
+    font-size: 0.9rem;
   }
 }

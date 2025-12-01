@@ -180,3 +180,136 @@ footer a {
 footer a:hover {
     color: white;
 }
+
+/* ===========================
+    RESPONSIVE DESIGN - DISEÑO ADAPTATIVO
+    ===========================
+    
+    Esta sección hace que Carnior se adapte a diferentes dispositivos.
+    Carnior NO tiene media queries aún, pero DEBERÍA tenerlas.
+    
+    CÓMO AGREGAR RESPONSIVE A CARNIOR:
+    
+    El diseño actual usa:
+    - Grid de dos columnas (.contenedor)
+    - Grid de tarjetas (grid-atlas)
+    - Aside fijo (sticky)
+    
+    PROBLEMAS EN MÓVILES SIN RESPONSIVE:
+    1. Las dos columnas quedarían muy apretadas
+    2. Las tarjetas serían muy pequeñas
+    3. El texto sería difícil de leer
+    4. El aside ocuparía mucho espacio
+    
+    SOLUCIÓN - AGREGAR ESTOS MEDIA QUERIES:
+=========================== */
+
+/* EJEMPLO: Para tablets (hasta 900px)
+@media (max-width: 900px) {
+    // Cambia grid de 2 columnas a 1 columna
+    .contenedor {
+        grid-template-columns: 1fr;  // Una sola columna
+        padding: 20px;               // Menos padding
+    }
+    
+    // El aside ya no es sticky, se vuelve normal
+    aside {
+        position: relative;  // Ya no sticky
+        top: auto;           // Resetea posición
+    }
+    
+    // Títulos más pequeños
+    h1 {
+        font-size: 60px;  // Reduce de 80px
+    }
+    
+    h2 {
+        font-size: 28px;  // Reduce de 35px
+    }
+    
+    // Tarjetas más grandes en grid
+    .grid-atlas {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+*/
+
+/* EJEMPLO: Para móviles (hasta 600px)
+@media (max-width: 600px) {
+    // Padding mínimo
+    .contenedor {
+        padding: 15px;
+    }
+    
+    header {
+        padding: 20px;  // Reduce de 40px
+    }
+    
+    // Títulos aún más pequeños
+    h1 {
+        font-size: 40px;  // Más pequeño para móviles
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    // Navegación vertical
+    nav ul {
+        flex-direction: column;  // Cambia a vertical
+        align-items: center;     // Centra elementos
+        gap: 10px;
+    }
+    
+    nav a {
+        font-size: 16px;  // Texto más pequeño
+    }
+    
+    // Una sola columna de tarjetas
+    .grid-atlas {
+        grid-template-columns: 1fr;  // 1 columna completa
+        gap: 15px;
+    }
+    
+    // Secciones más compactas
+    section {
+        padding: 15px;
+        margin-bottom: 30px;
+    }
+    
+    section h3 {
+        font-size: 22px;  // Reduce de 28px
+    }
+}
+*/
+
+/* EJEMPLO: Para móviles muy pequeños (hasta 400px)
+@media (max-width: 400px) {
+    h1 {
+        font-size: 32px;  // Título muy pequeño
+    }
+    
+    h2 {
+        font-size: 18px;
+    }
+    
+    nav a {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+    
+    .contenedor {
+        padding: 10px;
+    }
+}
+*/
+
+/* 
+RESUMEN DE PROPIEDADES CLAVE PARA RESPONSIVE:
+- grid-template-columns: Cambia número de columnas
+- flex-direction: Cambia orientación (row/column)
+- font-size: Reduce tamaños de texto
+- padding/margin: Reduce espaciado
+- position: Cambia de fixed/sticky a relative
+- display: Puede ocultar/mostrar elementos
+*/

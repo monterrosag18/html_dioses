@@ -222,41 +222,124 @@ section {
 }
 
 /* -------------------------------------------------- */
-/* MOBILE */
-/* -------------------------------------------------- */
+/* RESPONSIVE DESIGN - DISEÑO ADAPTATIVO
+/* --------------------------------------------------
+   
+   Esta sección controla cómo se ve Odin en diferentes dispositivos.
+   Usa Media Queries con min-width (Mobile First approach).
+   
+   CÓMO FUNCIONA:
+   
+   1. MOBILE FIRST STRATEGY:
+      - El CSS base está diseñado para móviles (1 columna por defecto)
+      - Los media queries AMPLÍAN el diseño para pantallas más grandes
+      - @media (min-width: XXXpx) = "DESDE este ancho en adelante"
+   
+   2. BREAKPOINTS USADOS:
+      - Base (sin media query): Móviles (< 768px)
+      - 768px+: Tablets y pantallas medianas
+      - 1024px+: Desktops y pantallas grandes
+   
+   3. QUÉ SE AJUSTA:
+      - Grid: Cambia de 1 a 2 a 4 columnas según espacio
+      - Header: Reorganiza de vertical a horizontal
+      - Navegación: Ajusta espaciado entre enlaces
+   
+   -------------------------------------------------- */
+
+/* BREAKPOINT 1: TABLETS Y PANTALLAS MEDIANAS (768px en adelante)
+   Se activa desde 768px hacia arriba */
 @media (min-width: 768px) {
     
+    /* Expande grid de tarjetas a 2 columnas */
     .grid-atlas {
-        grid-template-columns: repeat(2, 1fr); 
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+        /* repeat(2, 1fr) crea 2 columnas con 1 fracción cada una */
+        /* En móviles (< 768px) es 1 columna por defecto */
     }
 
+    /* Reorganiza el header para aprovechar espacio horizontal */
     .header-principal {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: left;
-        padding: 1rem 3rem;
+        display: flex;              /* Activa flexbox */
+        justify-content: space-between; /* Distribuye espacio entre elementos */
+        align-items: center;        /* Alinea verticalmente al centro */
+        text-align: left;           /* Texto alineado a la izquierda */
+        padding: 1rem 3rem;         /* Más padding horizontal en tablets */
     }
 
+    /* Aumenta espaciado entre enlaces de navegación */
     .navegacion ul {
-        gap: 2rem;
+        gap: 2rem; /* Más espacio que en móvil (donde sería menos) */
     }
 }
 
+/* BREAKPOINT 2: DESKTOPS Y PANTALLAS GRANDES (1024px en adelante)
+   Se activa desde 1024px hacia arriba */
 @media (min-width: 1024px) {
+    
+    /* Expande grid a 4 COLUMNAS para aprovechar ancho de desktop */
     .grid-atlas {
-        grid-template-columns: repeat(4, 1fr); 
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas iguales */
+        /* Esto permite mostrar 4 tarjetas lado a lado */
+        /* En tablets (768-1023px) serán 2 columnas */
+        /* En móviles (< 768px) será 1 columna */
     }
 }
 
+/* 
+   MEJORAS ADICIONALES QUE PODRÍAS AGREGAR:
+   
+   // Para móviles pequeños (hasta 480px)
+   @media (max-width: 480px) {
+       .titulo-mundo {
+           font-size: 4rem;    // Reduce de 7rem para móviles pequeños
+           top: 80px;          // Ajusta posición
+       }
+       
+       .navegacion ul {
+           flex-direction: column;  // Navegación vertical
+           gap: 0.5rem;
+       }
+       
+       .btn-nav {
+           width: 100%;        // Botones ocupan todo el ancho
+           text-align: center;
+       }
+       
+       .tarjeta {
+           padding: 1rem;      // Menos padding
+       }
+       
+       .contenido-ancho {
+           padding: 0 0.5rem;  // Padding mínimo
+       }
+   }
+   
+   // Para tablets horizontales (768px a 1023px)
+   @media (min-width: 768px) and (max-width: 1023px) {
+       .titulo-mundo {
+           font-size: 5rem;    // Tamaño intermedio
+       }
+       
+       .grid-atlas {
+           gap: 1rem;          // Gap intermedio
+       }
+   }
+*/
 
+/* -------------------------------------------------- */
+/* ANIMACIONES
+/* -------------------------------------------------- */
+
+/* Animación de flotación suave */
 @keyframes flotar {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-5px); }
     100% { transform: translateY(0px); }
 }
 
-.banner{
-    width: 1024;
-    right: 461;
-}
+/* Puedes aplicar esta animación a elementos así:
+   .elemento {
+       animation: flotar 2s ease-in-out infinite;
+   }
+*/

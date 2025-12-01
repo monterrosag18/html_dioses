@@ -169,26 +169,82 @@ footer a:hover {
     text-shadow: 0 0 15px #ffda44;
 }
 
-/* Responsive */
+/* ========================================
+   RESPONSIVE DESIGN - DISEÑO ADAPTATIVO
+   ========================================
+   Esta sección hace que la página de Jainer se adapte a diferentes tamaños de pantalla.
+   
+   CÓMO FUNCIONA:
+   - @media (max-width: 768px) detecta dispositivos con pantallas de 768px o menos (tablets y móviles)
+   - Dentro del media query, reajustamos elementos para que se vean mejor en pantallas pequeñas
+   - Los cambios principales incluyen: orientación de menús, tamaños de texto y espaciado
+   
+   QUÉ SE ESTÁ AJUSTANDO AQUÍ:
+   1. Navegación: Cambia de horizontal a vertical para móviles
+   2. Textos: Reduce tamaños de fuente para que quepan mejor
+   3. Espaciado: Reduce padding para aprovechar más espacio en móvil
+   ======================================== */
+
+/* Para tablets y móviles (768px o menos) */
 @media (max-width: 768px) {
+    /* Reorganiza el menú de navegación en columna vertical */
     nav {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column;  /* Cambia de fila horizontal a columna vertical */
+        align-items: center;     /* Centra los elementos */
     }
 
+    /* Ajusta el espaciado de los enlaces del menú */
     nav a {
-        margin: 8px 0;
+        margin: 8px 0;  /* Margen vertical entre enlaces (antes era horizontal) */
     }
 
+    /* Reduce el tamaño del título principal en móviles */
     header h1 {
-        font-size: 2.2rem;
+        font-size: 2.2rem;  /* Más pequeño que los 3rem originales */
     }
 
+    /* Reduce el tamaño del subtítulo */
     header h2 {
-        font-size: 1rem;
+        font-size: 1rem;  /* Más pequeño que el 1.2rem original */
     }
 
+    /* Reduce el padding de las secciones para aprovechar espacio */
     section {
-        padding: 20px;
+        padding: 20px;  /* Menos que los 30px originales */
+    }
+    
+    /* MEJORAS ADICIONALES QUE PODRÍAS AGREGAR:
+    
+    header img {
+        max-width: 100%;     // La imagen se ajusta al 100% del ancho disponible
+        height: auto;        // Mantiene la proporción
+    }
+    
+    .tarjeta {
+        padding: 15px;       // Menos padding en tarjetas para móvil
+    }
+    
+    #CATALOGO {
+        grid-template-columns: 1fr;  // Una sola columna en móvil en vez de múltiples
+        gap: 20px;
+    }
+    */
+}
+
+/* EJEMPLO DE BREAKPOINT ADICIONAL PARA MÓVILES MUY PEQUEÑOS:
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;   // Aún más pequeño para móviles pequeños
+    }
+    
+    nav a {
+        font-size: 0.9rem;   // Reduce tamaño de fuente de navegación
+        padding: 6px 12px;   // Reduce padding de botones
+    }
+    
+    section {
+        padding: 15px;       // Padding mínimo
     }
 }
+*/

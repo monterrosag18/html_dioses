@@ -9,7 +9,7 @@ body {
     /* Fondo con imagen y gradiente superpuesto con menos opacidad para más claridad */
     background-image: 
         linear-gradient(135deg, rgba(11, 43, 35, 0.35), rgba(27, 26, 18, 0.35)),
-        url('/imagenes/fondo-index.gif');
+        url('../imagenes/fondo-index.gif');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -93,10 +93,67 @@ footer {
 
 
 
+/* ========================================
+   RESPONSIVE DESIGN - DISEÑO ADAPTATIVO
+   ========================================
+   Esta sección hace que la página se adapte a diferentes tamaños de pantalla
+   utilizando Media Queries que detectan el ancho del dispositivo.
+   
+   CÓMO FUNCIONA:
+   - @media (max-width: XXXpx) detecta pantallas más pequeñas que XXX píxeles
+   - Dentro de cada media query, redefinimos estilos para ese tamaño específico
+   - Las propiedades más comunes a ajustar son: font-size, padding, margin, width
+   
+   BREAKPOINTS COMUNES (puntos de quiebre):
+   - 320px: Móviles pequeños
+   - 520px: Móviles medianos
+   - 768px: Tablets
+   - 1024px: Tablets horizontales / Laptops pequeñas
+   - 1200px: Escritorio estándar
+   ======================================== */
+
+/* Para pantallas de 520px o menos (móviles) */
 @media (max-width: 520px){
-    .container{padding:28px}
-    h1{font-size:1.8em}
+    /* Reduce el padding del contenedor para aprovechar más espacio en móvil */
+    .container{
+        padding: 28px; /* Menos padding que en desktop */
+    }
+    
+    /* Reduce el tamaño de la fuente del título para que quepa mejor */
+    h1{
+        font-size: 1.8em; /* Más pequeño que los 2.6em originales */
+    }
+    
+    /* OTRAS PROPIEDADES QUE PODRÍAS AGREGAR PARA MEJORAR RESPONSIVE:
+    
+    .link-card {
+        padding: 12px 16px; // Menos padding en tarjetas
+        font-size: 0.9em;   // Texto ligeramente más pequeño
+    }
+    
+    .member-name {
+        font-size: 0.95em;  // Nombres más pequeños
+    }
+    
+    .subtitle {
+        font-size: 0.9em;   // Subtítulo más pequeño
+    }
+    */
 }
+
+/* Para pantallas medianas (tablets) - EJEMPLO DE CÓMO AGREGAR MÁS BREAKPOINTS:
+
+@media (max-width: 768px) and (min-width: 521px) {
+    .container {
+        padding: 32px;
+        max-width: 600px;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+    }
+}
+*/
 
 .card-image {
     width: 30%;
