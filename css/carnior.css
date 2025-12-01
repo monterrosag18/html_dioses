@@ -12,7 +12,7 @@ body {
     font-family: Arial, sans-serif;
     color: white;
 
-    background-image: url("/imagenes/carnior/body-carnior.jpg");
+    background-image: url("imagenes/carnior/background_carnior.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
