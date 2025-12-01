@@ -18,6 +18,9 @@ html, body {
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; /* Usa las fuentes del sistema para mejor rendimiento / Uses system fonts for better performance */
   background: #0b0b0b; /* Fondo casi negro para el tema oscuro / Almost black background for dark theme */
   color: #efe9d6; /* Texto beige claro, fácil de leer sobre fondo oscuro / Light beige text, easy to read on dark background */
+  line-height: 1.5; /* Espaciado entre líneas para mejor legibilidad / Line spacing for better readability */
+}
+
 /* Variables para ajustar fácil el diseño - se pueden cambiar una vez y afectan todo
    Variables to easily adjust layout - change once and affects everything */
 :root {
@@ -34,9 +37,8 @@ body {
   padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap)); /* Calcula espacio izquierdo dinámicamente / Calculates left space dynamically */
   padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap)); /* Calcula espacio derecho dinámicamente / Calculates right space dynamically */
   min-height: 100vh; /* Mínimo la altura completa de la pantalla / Minimum full screen height */
-} padding-left: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap));
-  padding-right: calc(clamp(var(--side-min), var(--side-width), var(--side-max)) + var(--content-gap));
-  min-height: 100vh;
+}
+
 /* Las imágenes laterales - quedan fijas mientras scrolleas
    Side images - stay fixed while you scroll */
 .side {
@@ -64,9 +66,8 @@ body {
   background-image: url('../imagenes/anubis/anubisdia.gif'); /* GIF de Anubis diurno / Daytime Anubis GIF */
   background-position: right center; /* Alineado a la derecha verticalmente centrado / Right-aligned, vertically centered */
   box-shadow: inset 140px 0 140px -100px rgba(0,0,0,0.65); /* Sombra interior que crea fade hacia la izquierda / Inner shadow creates fade to the left */
-} background-position: right center;
-  box-shadow: inset 140px 0 140px -100px rgba(0,0,0,0.65);
 }
+
 /* Efecto de reflejo abajo de las imágenes - usa un pseudo-elemento
    Reflection effect below images - uses a pseudo-element */
 .side::after {
@@ -84,8 +85,8 @@ body {
   opacity: 0.12; /* Muy transparente, apenas visible / Very transparent, barely visible */
   mask-image: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0)); /* Gradiente que hace fade de arriba a abajo / Gradient that fades from top to bottom */
   pointer-events: none; /* No interfiere con eventos del mouse / Doesn't interfere with mouse events */
-} pointer-events: none;
 }
+
 /* Botones - estilo general para los enlaces tipo botón
    Buttons - general style for button-like links */
 .btn {
@@ -102,7 +103,8 @@ body {
 .btn:hover { 
   background: rgba(242,209,107,0.06); /* Fondo dorado muy tenue al pasar el mouse / Very faint gold background on mouse over */
   transform: translateY(-3px); /* Se mueve 3px hacia arriba / Moves 3px upward */
-} transform: translateY(-3px);
+}
+
 /* Header sticky que se queda arriba - siempre visible al hacer scroll
    Sticky header that stays on top - always visible when scrolling */
 .site-header {
@@ -139,7 +141,8 @@ body {
   color: #cfc3a0; /* Dorado más claro que el título / Lighter gold than title */
   font-size: 0.95rem; /* Un poco más chico que el título / Bit smaller than title */
   margin-top: 0.25rem; /* Pequeño espacio arriba / Small space on top */
-} font-size: 0.95rem;
+}
+
 /* Nav menu - menú de navegación principal
    Nav menu - main navigation menu */
 .main-nav {
@@ -159,8 +162,8 @@ body {
 .nav-link:hover { 
   background: rgba(255,255,255,0.02); /* Fondo muy sutil al pasar el mouse / Very subtle background on hover */
   color: #fff; /* El texto se vuelve blanco / Text becomes white */
-}nav-link:hover { 
-  background: rgba(255,255,255,0.02);
+}
+
 /* Contenedor principal - donde va todo el contenido importante
    Main container - where all important content goes */
 main {
@@ -186,6 +189,8 @@ main {
 .section h2 { 
   color: #f7e4a8; /* Dorado claro para títulos de sección / Light gold for section titles */
   margin-bottom: 0.6rem; /* Espacio abajo del título / Space below title */
+}
+
 /* Grid de tarjetas - organiza las tarjetas en columnas
    Cards grid - organizes cards in columns */
 .cards-grid {
@@ -206,6 +211,8 @@ main {
   border-radius: 10px; /* Esquinas bien redondeadas / Well rounded corners */
   border: 1px solid rgba(255,255,255,0.02); /* Borde sutil / Subtle border */
   transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease; /* Transiciones suaves para el hover / Smooth transitions for hover */
+}
+
 .card-image {
   flex: 0 0 120px; /* No crece, no encoge, siempre 120px de ancho / Doesn't grow, doesn't shrink, always 120px wide */
   height: 80px; /* Altura fija / Fixed height */
@@ -238,8 +245,8 @@ main {
 .card-desc { 
   color: #d6caa3; /* Dorado más claro para la descripción / Lighter gold for description */
   font-size: 0.95rem; /* Un poquito más chico / A bit smaller */
-} font-size: 1rem;
-  margin-bottom: 0.35rem;
+}
+
 /* Hover de las tarjetas - efecto al pasar el mouse
    Card hover - effect when mouse passes over */
 .card:hover {
@@ -276,7 +283,8 @@ main {
   flex-direction: column; /* Elementos apilados verticalmente / Elements stacked vertically */
   gap: 0.4rem; /* Espacio entre elementos / Space between elements */
   padding: 0 1rem; /* Espaciado horizontal / Horizontal spacing */
-} max-width: var(--content-max);
+}
+
 /* RESPONSIVE - Adaptaciones para diferentes tamaños de pantalla
    RESPONSIVE - Adaptations for different screen sizes */
 
@@ -370,13 +378,5 @@ main {
   
   .subtitle { 
     font-size: 0.9rem; /* Subtítulo más pequeño / Smaller subtitle */
-  }
-} 
-  .title-block h1 { 
-    font-size: 1.25rem;
-  }
-  
-  .subtitle { 
-    font-size: 0.9rem;
   }
 }
